@@ -19,7 +19,7 @@ import os
 import sys
 from pathlib import Path
 import sphinx
-)
+
 
 # -- Project information -----------------------------------------------------
 
