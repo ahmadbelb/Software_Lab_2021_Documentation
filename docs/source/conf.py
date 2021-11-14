@@ -15,7 +15,7 @@
 import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # -- Project information -----------------------------------------------------
 
