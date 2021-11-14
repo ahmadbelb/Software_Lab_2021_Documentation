@@ -1,6 +1,9 @@
 Installation instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. automodule:: src
+
+.. autofunction:: create_cylinders
 pypi
 ~~~~
 The simplest way to install *librosa* is through the Python Package Index (PyPI).
