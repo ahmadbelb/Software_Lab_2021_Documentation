@@ -1,5 +1,5 @@
 *******
-librosa
+Cylinder-based approximation of 3D objects
 *******
 `librosa` is a python package for music and audio analysis.  It provides the building
 blocks necessary to create music information retrieval systems.
@@ -70,3 +70,8 @@ If you want to cite librosa in a scholarly work, there are two ways to do it.
     changelog
     genindex
     glossary
+.. automodule:: Plot
+.. autofunction:: create_sections()
+
+.. automodule:: Plot
+   .. autofunction:: Plot.cylinder_approximation_3D

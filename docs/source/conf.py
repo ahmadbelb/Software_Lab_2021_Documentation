@@ -40,8 +40,8 @@ release = ''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
-              'sphinx.ext.napoleon','myst_parser']
-matlab_src_dir = os.path.dirname(os.path.abspath(__file__))
+              'sphinx.ext.napoleon','myst_parser','sphinxcontrib.matlab', 'sphinx.ext.autodoc']
+matlab_src_dir = "/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/source"
 primary_domain = 'mat'
 
 
@@ -74,34 +74,56 @@ pygments_style = 'sphinx'
 
 
 # -- Options for HTML output -------------------------------------------------
+import sphinx_rtd_theme
+
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
-# html_theme = 'sphinx_rtd_theme'
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+# If false, no module index is generated.
+html_domain_indices = True
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+# If false, no index is generated.
+html_use_index = True
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# The default sidebars (for documents that don't match any pattern) are
-# defined by theme itself.  Builtin themes are using these templates by
-# default: ``['localtoc.html', 'relations.html', 'sourcelink.html',
-# 'searchbox.html']``.
-#
-# html_sidebars = {}
+html_use_modindex = True
 
+# If true, the index is split into individual pages for each letter.
+# html_split_index = False
 
+# If true, links to the reST sources are added to the pages.
+# html_show_sourcelink = True
+
+# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
+# html_show_sphinx = True
+
+# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+# html_show_copyright = True
+
+# If true, an OpenSearch description file will be output, and all pages will
+# contain a <link> tag referring to it.  The value of this option must be the
+# base URL from which the finished HTML is served.
+# html_use_opensearch = ''
+
+# This is the file name suffix for HTML files (e.g. ".xhtml").
+# html_file_suffix = None
+
+# Output file base name for HTML help builder.
+htmlhelp_basename = "librosadoc"
+
+html_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.svg'
+
+html_theme_options = {
+    'logo_only': True,
+    'style_nav_header_background': 'white',
+    'analytics_id': 'UA-171031946-1',
+}
+html_static_path = ['/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static']
+html_css_files = [
+    '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static/css/custom.css',
+]
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
@@ -109,6 +131,58 @@ htmlhelp_basename = 'sphinxcontrib-matlabdomaindoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
+# -- Options for LaTeX output --------------------------------------------------
+
+latex_elements = {
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'letterpaper',
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '10pt',
+    # Additional stuff for the LaTeX preamble.
+    #'preamble': '',
+    'maxlistdepth' : '12',
+    'fontpkg': r'''
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+\usepackage{mathpazo} % math & rm
+\linespread{1.05}        % Palatino needs more leading (space between lines)
+\normalfont
+\usepackage[T1]{fontenc}
+''',
+}
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title, author, documentclass [howto/manual]).
+latex_documents = [
+    (
+        "index",
+        "librosa.tex",
+        u"librosa Documentation",
+        u"The librosa development team",
+        "manual",
+    )
+]
+latex_engine = 'xelatex'
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+latex_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.png'
+
+# For "manual" documents, if this is true, then toplevel headings are parts,
+# not chapters.
+# latex_use_parts = False
+
+# If true, show page references after internal links.
+# latex_show_pagerefs = False
+
+# If true, show URL addresses after external links.
+# latex_show_urls = False
+
+# Documents to append as an appendix to all manuals.
+# latex_appendices = []
+
+# If false, no module index is generated.
+# latex_domain_indices = True
+
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
@@ -158,30 +232,51 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+# -- Options for manual page output --------------------------------------------
+
+# One entry per manual page. List of tuples
+# (source start file, name, description, authors, manual section).
+man_pages = [
+    ("index", "librosa", u"librosa Documentation", [u"The librosa development team"], 1)
+]
+
+# If true, show URL addresses after external links.
+# man_show_urls = False
 
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
+# -- Options for Texinfo output ------------------------------------------------
+
+# Grouping the document tree into Texinfo files. List of tuples
+# (source start file, target name, title, author,
+#  dir menu entry, description, category)
+texinfo_documents = [
+    (
+        "index",
+        "librosa",
+        u"librosa Documentation",
+        u"The librosa development team",
+        "librosa",
+        "One line description of project.",
+        "Miscellaneous",
+    )
+]
+
+# Documents to append as an appendix to all manuals.
+# texinfo_appendices = []
 
 # If false, no module index is generated.
-html_domain_indices = True
+# texinfo_domain_indices = True
 
-# If false, no index is generated.
-html_use_index = True
+# How to display URL addresses: 'footnote', 'no', or 'inline'.
+# texinfo_show_urls = 'footnote'
 
-html_use_modindex = True
-# Output file base name for HTML help builder.
-htmlhelp_basename = "librosadoc"
+autodoc_member_order = "bysource"
 
-html_logo = 'img/librosa_logo_text.svg'
+smv_branch_whitelist = r"^(main)$"  # build main branch, and anything relating to documentation
+smv_tag_whitelist = r"^((0\.7\.2)|(0\.[89]\.\d+))$"  # use this for final builds
+smv_released_pattern = r'.*tags.*'
+smv_remote_whitelist = None
+smv_greatest_tag = True
+smv_prefer_remote_refs = False
 
-html_theme_options = {
-    'logo_only': True,
-    'style_nav_header_background': 'white',
-    'analytics_id': 'UA-171031946-1',
-}
-html_static_path = ['_static']
-html_css_files = [
-    'css/custom.css',
-]
 
