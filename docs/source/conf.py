@@ -156,3 +156,55 @@ texinfo_documents = [
      author, 'sphinxcontrib-matlabdomain', 'One line description of project.',
      'Miscellaneous'),
 ]
+import sphinx_rtd_theme
+
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+
+# If false, no module index is generated.
+html_domain_indices = True
+
+# If false, no index is generated.
+html_use_index = True
+
+html_use_modindex = True
+# Output file base name for HTML help builder.
+htmlhelp_basename = "librosadoc"
+
+html_logo = 'img/librosa_logo_text.svg'
+
+html_theme_options = {
+    'logo_only': True,
+    'style_nav_header_background': 'white',
+    'analytics_id': 'UA-171031946-1',
+}
+html_static_path = ['_static']
+html_css_files = [
+    'css/custom.css',
+]
+
+# -- Options for LaTeX output --------------------------------------------------
+# Add any paths that contain templates here, relative to this directory.
+templates_path = [
+    "_templates",
+]
+
+html_sidebars = {'*': ["versions.html"]}
+
+
+# The suffix of source filenames.
+source_suffix = ".rst"
+
+# The encoding of source files.
+source_encoding = 'utf-8-sig'
+
+# The master toctree document.
+master_doc = "index"
+
+# General information about the project.
+project = u"librosa"
+copyright = u"2013--2021, librosa development team"
+
