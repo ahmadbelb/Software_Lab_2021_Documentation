@@ -15,10 +15,8 @@
 import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-path = os.getcwd()
+sys.path.insert(0, os.path.abspath("."))
 
-print(path)
 # -- Project information -----------------------------------------------------
 
 project = 'Cylinder'
