@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-channel &mdash; Cylinder  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Caching" href="cache.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+            <a href="index.html">
+            <img src="_static/BMW.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-channel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dimensions">Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-uses-and-caveats">Advanced uses and caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cache.html">Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ioformats.html">Advanced I/O Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recordings.html">Example files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cylinder</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Multi-channel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/multichannel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="multi-channel">
+<h1>Multi-channel<a class="headerlink" href="#multi-channel" title="Permalink to this headline">¶</a></h1>
+<p>This section provides an overview of how multi-channel signals are handled in
+<em>librosa</em>.
+The one-sentence summary is that most of the functions which only supported single-channel
+inputs up to librosa 0.8 now support multi-channel audio with no modification necessary.</p>
+<div class="section" id="dimensions">
+<h2>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h2>
+<p>Before discussing multi-channel, it is worth reviewing how single-channel (monaural)
+signals are processed.
+Librosa processes all signals and derived data as <cite>numpy.ndarray</cite> (N-dimensional array) objects.
+By default, when librosa loads a multichannel signal, it averages all channels to produce a mono mixture.
+The resulting object is a 1-dimensional array of shape <code class="docutils literal notranslate"><span class="pre">(N_samples,)</span></code> which
+represents the time-series of sample values.
+Subsequent processing typically produces higher-dimensional transformations of the
+time-series, for example, a short-time Fourier transform (<code class="docutils literal notranslate"><span class="pre">librosa.stft</span></code>) produces
+a two-dimensional array of shape <code class="docutils literal notranslate"><span class="pre">(N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+Note that the second (trailing) dimension corresponds to the number of frames in the
+signal, which is proportional to length; the first dimension corresponds to the
+number of frequencies (or more generally, features) measured at each frame.</p>
+<p>When working with multi-channel signals, we may choose to skip the default down-mixing
+step by specifying <code class="docutils literal notranslate"><span class="pre">mono=False</span></code> in the call to <code class="docutils literal notranslate"><span class="pre">librosa.load</span></code>, as in the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">librosa</span>
+
+<span class="c1"># Get the &quot;high-quality&quot; multi-channel version of</span>
+<span class="c1"># an example track</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">ex</span><span class="p">(</span><span class="s1">&#39;trumpet&#39;</span><span class="p">,</span> <span class="n">hq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Load as multi-channel data</span>
+<span class="n">y_stereo</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mono</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting object now has two dimensions instead of one, with <code class="docutils literal notranslate"><span class="pre">y_stereo.shape</span> <span class="pre">==</span>
+<span class="pre">(N_channels,</span> <span class="pre">N_samples)</span></code>.
+This way, we can access the first channel as <code class="docutils literal notranslate"><span class="pre">y_stereo[0]</span></code>, the second channel as
+<code class="docutils literal notranslate"><span class="pre">y_stereo[1]</span></code>, and so on if there are more than two channels.</p>
+<p>Librosa represents data according to the following general pattern:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>trailing dimensions correspond to time (samples, frames, etc)</p></li>
+<li><p>leading dimensions may correspond to channels</p></li>
+<li><p>intermediate dimensions correspond to “features” (or frequencies, harmonics,
+etc).</p></li>
+</ul>
+</div></blockquote>
+<p>This pattern is designed so that indexing is <em>consistent</em> when slicing out
+individual channels.
+This is demonstrated in the examples below.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>As a first example, consider computing a short-time Fourier transform of the stereo
+example signal loaded above.
+This is accomplished in exactly the same way as if the signal was mono, that is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D_stereo</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y_stereo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The shape of the resulting STFT is <code class="docutils literal notranslate"><span class="pre">D_stereo.shape</span> <span class="pre">==</span> <span class="pre">(N_channels,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+The slice <code class="docutils literal notranslate"><span class="pre">D_stereo[0]</span></code> then corresponds to the STFT of the first channel <code class="docutils literal notranslate"><span class="pre">y_stereo[0]</span></code>, and <code class="docutils literal notranslate"><span class="pre">D_stereo[1]</span></code> is the STFT of the second channel <code class="docutils literal notranslate"><span class="pre">y_stereo[1]</span></code>, and so on.</p>
+<p>As a more advanced example, we can construct a multi-channel, harmonic spectrogram
+using <cite>librosa.interp_harmonics</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S_stereo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D_stereo</span><span class="p">)</span>
+
+<span class="c1"># Get the default Fourier frequencies</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">fft_frequencies</span><span class="p">(</span><span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
+
+<span class="c1"># We&#39;ll interpolate the first five harmonics of each frequency</span>
+<span class="n">harmonics</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">S_harmonics</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">interp_harmonics</span><span class="p">(</span><span class="n">S_stereo</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">harmonics</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting object has four dimensions now: <code class="docutils literal notranslate"><span class="pre">S_harmonics.shape</span> <span class="pre">==</span> <span class="pre">(N_channels,</span>
+<span class="pre">N_harmonics,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+As noted above, the leading dimension corresponds to channels, the trailing
+dimension corresponds to time (frames), and the intermediate dimensions correspond
+to derived features.
+In this way, indexing a specific channel (e.g., <code class="docutils literal notranslate"><span class="pre">S_harmonics[1]</span></code> for the second
+channel) provides the entire feature array derived from the second channel, and
+produces an output of shape <code class="docutils literal notranslate"><span class="pre">(N_harmonics,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>When reading the library documentation, you may come across functions like
+<cite>librosa.stft</cite> which describe the input signal parameter as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">)],</span> <span class="n">real</span><span class="o">-</span><span class="n">valued</span>
+</pre></div>
+</div>
+<p>The “…” here is analogous to Python’s <cite>Ellipsis</cite> object, and in this context, it acts as a place-holder for “0 or more dimensions”.
+This is analogous to numpy’s use of <cite>Ellipsis</cite> to bypass variable numbers of
+dimensions in <cite>numpy.ndarray</cite> objects.
+For example, to slice a single frame <code class="docutils literal notranslate"><span class="pre">n</span></code> out of the multi-channel harmonic spectrogram
+above, you could do either:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The latter is generally preferred as it generalizes to arbitrarily many leading
+dimensions.</p>
+<p>Whenever functions are described as accepting shapes containing “…”, the
+implication is that the (arbitrarily many) leading dimensions are preserved in the
+output unless otherwise stated.</p>
+<p>Some functions accept an <code class="docutils literal notranslate"><span class="pre">axis=</span></code> parameter to specify a target axis along which to
+operate.
+As a general convention, <code class="docutils literal notranslate"><span class="pre">axis=-1</span></code> (the final axis) usually corresponds to “time”
+(or samples, or frames), while <code class="docutils literal notranslate"><span class="pre">axis=-2</span></code> (the second-to-last axis) usually
+corresponds to “frequency” or some other derived feature.</p>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Not all functions in librosa naturally generalize to multi-channel data, though most
+do.
+Similarly, some functions do generalize, but in ways that may not match your
+expectations.
+This section briefly summarizes places where multi-channel support is limited.</p>
+<p><strong>Detectors</strong> with ragged output, for example beat tracking (<cite>librosa.beat</cite>) and
+onset detection (<cite>librosa.onset.onset_detect</cite>) do not support multi-channel inputs.
+This is because the output may have differing numbers of events in each channel, and
+therefore cannot be consistently stored in a <cite>numpy.ndarray</cite> output object.
+In these cases, it is best to either process each channel separately (if they are
+truly independent) or aggregate representations across channels (e.g., by averaging
+features) if they are strongly related.</p>
+<p><strong>Self- and cross-similarity matrices</strong>, as computed by <cite>librosa.segment.recurrence_matrix</cite> have limited multi-channel support.
+This is because the output objects may be sparse data structures (such as <cite>scipy.sparse.csr_matrix</cite>) which do not generalize to more than two dimensions.
+These functions still accept multi-channel input, but flatten the leading dimensions
+(channels) when comparing features between different time-steps.
+If independent similarity matrices are desired, it is recommended to process each
+channel independently.</p>
+<p><strong>Decompositions and sequence alignments</strong>, like similarity matrices, have limited
+support.
+Harmonic-percussive source separation (<cite>librosa.decompose.hpss</cite>) can fully accept
+multi-channel input with independent processing, but other decomposition
+(<cite>librosa.decompose.nn_filter</cite> and <cite>librosa.decompose.decompose</cite>) impose some
+restrictions on how multi-channel inputs are processed.
+Sequence alignment functions like <cite>librosa.decompose.dtw</cite> and
+<cite>librosa.decompose.rqa</cite> operate much like similarity matrix functions, and interpret
+leading dimensions as additional “feature” dimensions which are flattened prior to
+alignment.</p>
+<p><strong>Display</strong> functions have limited multi-channel support.
+<cite>librosa.display.waveshow</cite> can accept single or 2-channel input, though the second
+channel is only used when zoomed out to envelope mode.
+<cite>librosa.display.specshow</cite> does not accept multi-channel input.</p>
+</div>
+<div class="section" id="advanced-uses-and-caveats">
+<h2>Advanced uses and caveats<a class="headerlink" href="#advanced-uses-and-caveats" title="Permalink to this headline">¶</a></h2>
+<p>Multi-channel support is relatively flexible in librosa.
+In particular, you may organize channels over two dimensions or more, although a
+single channel dimension is the most common use case.
+For example, if you want to simultaneously process a collection of stereo recordings
+of equal length, you may collect the signals into an array of shape <code class="docutils literal notranslate"><span class="pre">y.shape</span> <span class="pre">=</span>
+<span class="pre">(N_tracks,</span> <span class="pre">N_channels,</span> <span class="pre">N_samples)</span></code>.
+Any derived data (e.g. spectrograms like in the example above) would then have <em>two</em>
+leading dimensions, corresponding first to track and then to channel within the
+track.
+In theory, any number of leading dimensions can be used, though caution should be
+exercised to minimize memory consumption.</p>
+<p>Note that although many functions preserve channel independence, this is not
+guaranteed in general.
+For example, decibel scaling by <cite>librosa.amplitude_to_db</cite> will compare each channel
+to a reference value which may be derived from <em>all channels simultaneously</em>.
+This can lead to differences in behavior when processing channels independently or
+simultaneously as a multi-channel input.
+Functions which guarantee channel-wise independence are documented accordingly.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="util.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cache.html" class="btn btn-neutral float-right" title="Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Ahmad M. Belbeisi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171031946-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-171031946-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

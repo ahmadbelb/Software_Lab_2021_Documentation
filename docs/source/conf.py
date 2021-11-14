@@ -13,16 +13,15 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-import sphinx_rtd_theme
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'sphinxcontrib-matlabdomain'
-copyright = '2018, Jørgen Cederberg'
-author = 'Jørgen Cederberg'
+project = 'Cylinder'
+copyright = '2021, Ahmad M. Belbeisi'
+author = 'Ahmad M. Belbeisi'
 
 # The short X.Y version
 version = ''
@@ -40,8 +39,8 @@ release = ''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
-              'sphinx.ext.napoleon','myst_parser','sphinxcontrib.matlab', 'sphinx.ext.autodoc']
-matlab_src_dir = "/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/source"
+              'sphinx.ext.napoleon','myst_parser']
+matlab_src_dir = "."
 primary_domain = 'mat'
 
 
@@ -74,6 +73,7 @@ pygments_style = 'sphinx'
 
 
 # -- Options for HTML output -------------------------------------------------
+
 import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme"
@@ -113,16 +113,16 @@ html_use_modindex = True
 # Output file base name for HTML help builder.
 htmlhelp_basename = "librosadoc"
 
-html_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.svg'
+html_logo = 'img/BMW.svg'
 
 html_theme_options = {
     'logo_only': True,
-    'style_nav_header_background': 'white',
+    'style_nav_header_background': 'black',
     'analytics_id': 'UA-171031946-1',
 }
-html_static_path = ['/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static']
+html_static_path = ['_static']
 html_css_files = [
-    '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static/css/custom.css',
+    'css/custom.css',
 ]
 # -- Options for HTMLHelp output ---------------------------------------------
 
@@ -131,58 +131,6 @@ htmlhelp_basename = 'sphinxcontrib-matlabdomaindoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
-# -- Options for LaTeX output --------------------------------------------------
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    'papersize': 'letterpaper',
-    # The font size ('10pt', '11pt' or '12pt').
-    'pointsize': '10pt',
-    # Additional stuff for the LaTeX preamble.
-    #'preamble': '',
-    'maxlistdepth' : '12',
-    'fontpkg': r'''
-\usepackage[scaled]{helvet} % ss
-\usepackage{courier} % tt
-\usepackage{mathpazo} % math & rm
-\linespread{1.05}        % Palatino needs more leading (space between lines)
-\normalfont
-\usepackage[T1]{fontenc}
-''',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-    (
-        "index",
-        "librosa.tex",
-        u"librosa Documentation",
-        u"The librosa development team",
-        "manual",
-    )
-]
-latex_engine = 'xelatex'
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-latex_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.png'
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-# latex_use_parts = False
-
-# If true, show page references after internal links.
-# latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-# latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-# latex_appendices = []
-
-# If false, no module index is generated.
-# latex_domain_indices = True
-
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
@@ -231,52 +179,3 @@ texinfo_documents = [
      author, 'sphinxcontrib-matlabdomain', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-# -- Options for manual page output --------------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ("index", "librosa", u"librosa Documentation", [u"The librosa development team"], 1)
-]
-
-# If true, show URL addresses after external links.
-# man_show_urls = False
-
-
-# -- Options for Texinfo output ------------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-    (
-        "index",
-        "librosa",
-        u"librosa Documentation",
-        u"The librosa development team",
-        "librosa",
-        "One line description of project.",
-        "Miscellaneous",
-    )
-]
-
-# Documents to append as an appendix to all manuals.
-# texinfo_appendices = []
-
-# If false, no module index is generated.
-# texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-# texinfo_show_urls = 'footnote'
-
-autodoc_member_order = "bysource"
-
-smv_branch_whitelist = r"^(main)$"  # build main branch, and anything relating to documentation
-smv_tag_whitelist = r"^((0\.7\.2)|(0\.[89]\.\d+))$"  # use this for final builds
-smv_released_pattern = r'.*tags.*'
-smv_remote_whitelist = None
-smv_greatest_tag = True
-smv_prefer_remote_refs = False
-
-
