@@ -19,8 +19,7 @@ import os
 import sys
 from pathlib import Path
 import sphinx
-srcpath = os.path.abspath(Path(os.path.dirname(__file__)) / '.')
-sys.path.insert(0, srcpath)
+)
 
 # -- Project information -----------------------------------------------------
 
@@ -45,7 +44,7 @@ release = ''
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
               'sphinx.ext.napoleon','myst_parser']
-matlab_src_dir = "."
+matlab_src_dir = os.path.dirname(os.path.abspath(__file__))
 primary_domain = 'mat'
 
 
