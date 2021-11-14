@@ -1,13 +1,55 @@
-Multi-channel
+plane_intersect
 ^^^^^^^^^^^^^
+.. autofunction:: source.plane_intersect
 
-This section provides an overview of how multi-channel signals are handled in
-*librosa*.
-The one-sentence summary is that most of the functions which only supported single-channel 
-inputs up to librosa 0.8 now support multi-channel audio with no modification necessary.
 
-Dimensions
+stlReadFirst
 ----------
+.. autofunction:: source.stlReadFirst
+
+
+stlread
+----------
+.. autofunction:: source.stlread
+
+
+create_sections_initial
+----------
+.. autofunction:: source.create_sections_initial
+
+
+
+
+define_2D_polygons
+----------
+.. autofunction:: source.define_2D_polygons
+
+rewriteY_value
+----------
+.. autofunction:: source.rewriteY_value
+create_sections
+----------
+.. autofunction:: source.create_sections
+
+
+
+
+define_2D_polygons
+----------
+.. autofunction:: source.define_2D_polygons
+
+
+create_cylinders
+----------
+.. autofunction:: source.create_cylinders
+
+
+
+plot_cylinders
+----------
+.. autofunction:: source.plot_cylinders
+
+
 Before discussing multi-channel, it is worth reviewing how single-channel (monaural)
 signals are processed.
 Librosa processes all signals and derived data as `numpy.ndarray` (N-dimensional array) objects.
@@ -28,7 +70,7 @@ step by specifying ``mono=False`` in the call to ``librosa.load``, as in the fol
 
     import librosa
 
-    # Get the "high-quality" multi-channel version of 
+    # Get the "high-quality" multi-channel version of
     # an example track
     filename = librosa.ex('trumpet', hq=True)
 
@@ -53,7 +95,7 @@ individual channels.
 This is demonstrated in the examples below.
 
 
-Examples
+stlReadFirst
 --------
 
 As a first example, consider computing a short-time Fourier transform of the stereo
@@ -177,7 +219,7 @@ Advanced uses and caveats
 -------------------------
 
 Multi-channel support is relatively flexible in librosa.
-In particular, you may organize channels over two dimensions or more, although a 
+In particular, you may organize channels over two dimensions or more, although a
 single channel dimension is the most common use case.
 For example, if you want to simultaneously process a collection of stereo recordings
 of equal length, you may collect the signals into an array of shape ``y.shape =

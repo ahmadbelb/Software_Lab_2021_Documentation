@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>plane_intersect &mdash; Cylinder-based approximation of 3D objects</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+            <a href="index.html">
+            <img src="_static/BMW.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">plane_intersect</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stlreadfirst">stlReadFirst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stlread">stlread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-sections-initial">create_sections_initial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-2d-polygons">define_2D_polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rewritey-value">rewriteY_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-sections">create_sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">define_2D_polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-cylinders">create_cylinders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plot-cylinders">plot_cylinders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">stlReadFirst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-uses-and-caveats">Advanced uses and caveats</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cylinder</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>plane_intersect</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/plane_intersect.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="plane-intersect">
+<h1>plane_intersect<a class="headerlink" href="#plane-intersect" title="Permalink to this headline">¶</a></h1>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.plane_intersect">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">plane_intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">N1</span></em>, <em class="sig-param"><span class="pre">A1</span></em>, <em class="sig-param"><span class="pre">N2</span></em>, <em class="sig-param"><span class="pre">A2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.plane_intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plane_intersect computes the intersection of two planes(if any)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">N1</dt>
+<dd class="field-odd"><p>normal vector to Plane 1</p>
+</dd>
+<dt class="field-even">A1</dt>
+<dd class="field-even"><p>any point that belongs to Plane 1</p>
+</dd>
+<dt class="field-odd">N2</dt>
+<dd class="field-odd"><p>normal vector to Plane 2</p>
+</dd>
+<dt class="field-even">A2</dt>
+<dd class="field-even"><p>any point that belongs to Plane 2</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">Palg</dt>
+<dd class="field-odd"><p>is a point that lies on the interection straight line.</p>
+</dd>
+<dt class="field-even">Nalg</dt>
+<dd class="field-even"><p>is the direction vector of the straight line</p>
+</dd>
+<dt class="field-odd">check</dt>
+<dd class="field-odd"><p>check is an integer (0:Plane 1 and Plane 2 are parallel
+1:Plane 1 and Plane 2 coincide
+2:Plane 1 and Plane 2 intersect)</p>
+</dd>
+</dl>
+</dd>
+<dt>Example:</dt><dd><p>Determine the intersection of these two planes:</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}2x - 5y + 3z = 12 \\ 3x + 4y - 3z = 6\end{split}\]</div>
+<div class="line-block">
+<div class="line">The first plane is represented by the normal vector N1=[2 -5 3]
+  and any arbitrary point that lies on the plane, ex: A1=[0 0 4]</div>
+<div class="line-block">
+<div class="line">The second plane is represented by the normal vector N2=[3 4 -3]
+and any arbitrary point that lies on the plane, ex: A2=[0 0 -2]</div>
+</div>
+</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">P</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">check</span><span class="p">]=</span><span class="n">plane_intersect</span><span class="p">([</span><span class="mi">2</span> <span class="o">-</span><span class="mi">5</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">],[</span><span class="mi">3</span> <span class="mi">4</span> <span class="o">-</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">2</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This function is written by :</div>
+<div class="line-block">
+<div class="line">Nassim Khaled</div>
+<div class="line">Wayne State University</div>
+<div class="line">Research Assistant and Phd candidate</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<p>If you have any comments or face any problems, please feel free to leave
+your comments and i will try to reply to you as fast as possible.</p>
+</dd></dl>
+
+<div class="section" id="stlreadfirst">
+<h2>stlReadFirst<a class="headerlink" href="#stlreadfirst" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.stlReadFirst">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">stlReadFirst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fileName</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.stlReadFirst" title="Permalink to this definition">¶</a></dt>
+<dd><p>STLREAD reads any STL file not depending on its format
+V are the vertices
+F are the faces
+N are the normals
+NAME is the name of the STL object (NOT the name of the STL file)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="stlread">
+<h2>stlread<a class="headerlink" href="#stlread" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.stlread">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">stlread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.stlread" title="Permalink to this definition">¶</a></dt>
+<dd><p>STLREAD imports geometry from an STL file into MATLAB.
+FV = STLREAD(FILENAME) imports triangular faces from the ASCII or binary
+STL file idicated by FILENAME, and returns the patch struct FV, with fields
+‘faces’ and ‘vertices’.</p>
+<p>[F,V] = STLREAD(FILENAME) returns the faces F and vertices V separately.</p>
+<p>[F,V,N] = STLREAD(FILENAME) also returns the face normal vectors.</p>
+<p>The faces and vertices are arranged in the format used by the PATCH plot
+object.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="create-sections-initial">
+<h2>create_sections_initial<a class="headerlink" href="#create-sections-initial" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.create_sections_initial">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">create_sections_initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">F</span></em>, <em class="sig-param"><span class="pre">V</span></em>, <em class="sig-param"><span class="pre">N</span></em>, <em class="sig-param"><span class="pre">number_of_sections</span></em>, <em class="sig-param"><span class="pre">area_percentage_parallel</span></em>, <em class="sig-param"><span class="pre">ends_offset_fraction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.create_sections_initial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define some tolerances (attention, also defined in define_2D_polygons!!)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="define-2d-polygons">
+<h2>define_2D_polygons<a class="headerlink" href="#define-2d-polygons" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.define_2D_polygons">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">define_2D_polygons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mesh_list</span></em>, <em class="sig-param"><span class="pre">y_values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.define_2D_polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the maximum possible 2D-polygon, which goes through each section</p>
+</dd></dl>
+
+</div>
+<div class="section" id="rewritey-value">
+<h2>rewriteY_value<a class="headerlink" href="#rewritey-value" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.rewriteY_value">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">rewriteY_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.rewriteY_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="create-sections">
+<h2>create_sections<a class="headerlink" href="#create-sections" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.create_sections">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">create_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">F</span></em>, <em class="sig-param"><span class="pre">V</span></em>, <em class="sig-param"><span class="pre">N</span></em>, <em class="sig-param"><span class="pre">number_of_sections_or_vector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.create_sections" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2>define_2D_polygons<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">define_2D_polygons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mesh_list</span></em>, <em class="sig-param"><span class="pre">y_values</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates the maximum possible 2D-polygon, which goes through each section</p>
+</dd></dl>
+
+</div>
+<div class="section" id="create-cylinders">
+<h2>create_cylinders<a class="headerlink" href="#create-cylinders" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.create_cylinders">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">create_cylinders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">polygon_list</span></em>, <em class="sig-param"><span class="pre">y_values</span></em>, <em class="sig-param"><span class="pre">number_circles_per_section</span></em>, <em class="sig-param"><span class="pre">red_radius_factor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.create_cylinders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plane_intersect computes the intersection of two planes(if any)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">polygon_list</dt>
+<dd class="field-odd"><p>normal vector to Plane 1</p>
+</dd>
+<dt class="field-even">y_values</dt>
+<dd class="field-even"><p>any point that belongs to Plane 1</p>
+</dd>
+<dt class="field-odd">number_circles_per_section</dt>
+<dd class="field-odd"><p>normal vector to Plane 2</p>
+</dd>
+<dt class="field-even">red_radius_factor</dt>
+<dd class="field-even"><p>any point that belongs to Plane 2</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">cylinders</dt>
+<dd class="field-odd"><p>is a point that lies on the interection straight line.</p>
+</dd>
+<dt class="field-even">cylinders_red</dt>
+<dd class="field-even"><p>is the direction vector of the straight line</p>
+</dd>
+</dl>
+</dd>
+<dt>Example:</dt><dd><p>Determine the intersection of these two planes:</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}2x - 5y + 3z = 12 \\ 3x + 4y - 3z = 6\end{split}\]</div>
+<div class="line-block">
+<div class="line">The first plane is represented by the normal vector N1=[2 -5 3]
+  and any arbitrary point that lies on the plane, ex: A1=[0 0 4]</div>
+<div class="line-block">
+<div class="line">The second plane is represented by the normal vector N2=[3 4 -3]
+and any arbitrary point that lies on the plane, ex: A2=[0 0 -2]</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<dl class="simple">
+<dt>Test input:</dt><dd><p>Cylinders has to be formatted, as needed by other group</p>
+</dd>
+</dl>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y_values</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">];</span>
+<span class="n">P1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mf">0.5</span> <span class="mf">0.75</span><span class="p">;</span> <span class="n">1</span> <span class="s">1</span><span class="p">;</span> <span class="mf">1.5</span> <span class="mf">0.5</span><span class="p">;</span> <span class="mf">1.5</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">;</span> <span class="mf">1.25</span> <span class="mf">0.3</span><span class="p">;</span> <span class="n">1</span> <span class="s">0</span><span class="p">;</span> <span class="mf">1.25</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">;</span> <span class="n">1</span> <span class="s">-1]</span><span class="p">;</span>
+<span class="n">P1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="n">0</span> <span class="s">1.3</span><span class="p">;</span> <span class="mf">1.3</span> <span class="mf">1.3</span><span class="p">;</span> <span class="mf">1.3</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">P_end1</span> <span class="p">=</span> <span class="p">[</span><span class="n">P1</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span><span class="n">P1</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)];</span>
+<span class="n">P2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="n">0</span> <span class="s">1</span><span class="p">;</span> <span class="n">1</span> <span class="s">1</span><span class="p">;</span> <span class="n">1</span> <span class="s">0]</span><span class="p">;</span>
+<span class="n">P_end2</span> <span class="p">=</span> <span class="p">[</span><span class="n">P2</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span><span class="n">P2</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)];</span>
+<span class="n">P3</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span> <span class="mi">0</span><span class="p">;</span> <span class="o">-</span><span class="mf">0.1</span> <span class="mi">1</span><span class="p">;</span> <span class="mf">0.4</span> <span class="mf">0.7</span><span class="p">;</span> <span class="mf">0.9</span> <span class="mi">1</span><span class="p">;</span> <span class="mf">0.9</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">P_end3</span> <span class="p">=</span> <span class="p">[</span><span class="n">P3</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span><span class="n">P3</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)];</span>
+<span class="n">polygon_list</span> <span class="p">=</span> <span class="p">{{</span><span class="n">P1</span><span class="p">,</span><span class="n">P_end1</span><span class="p">},{</span><span class="n">P2</span><span class="p">,</span><span class="n">P_end2</span><span class="p">},{</span><span class="n">P3</span><span class="p">,</span><span class="n">P_end3</span><span class="p">}};</span>
+<span class="n">polygon_list</span> <span class="p">=</span> <span class="p">{{</span><span class="n">P1</span><span class="p">,</span><span class="n">P_end1</span><span class="p">},{</span><span class="n">P1</span><span class="p">,</span><span class="n">P_end1</span><span class="p">},{</span><span class="n">P1</span><span class="p">,</span><span class="n">P_end1</span><span class="p">}};</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This function is written by :</div>
+<div class="line-block">
+<div class="line">Nassim Khaled</div>
+<div class="line">Wayne State University</div>
+<div class="line">Research Assistant and Phd candidate</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<p>If you have any comments or face any problems, please feel free to leave
+your comments and i will try to reply to you as fast as possible.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-cylinders">
+<h2>plot_cylinders<a class="headerlink" href="#plot-cylinders" title="Permalink to this headline">¶</a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="source.plot_cylinders">
+<span class="sig-prename descclassname"><span class="pre">source.</span></span><span class="sig-name descname"><span class="pre">plot_cylinders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cylinders</span></em>, <em class="sig-param"><span class="pre">cylinders_red</span></em>, <em class="sig-param"><span class="pre">y_values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.plot_cylinders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Before discussing multi-channel, it is worth reviewing how single-channel (monaural)
+signals are processed.
+Librosa processes all signals and derived data as <cite>numpy.ndarray</cite> (N-dimensional array) objects.
+By default, when librosa loads a multichannel signal, it averages all channels to produce a mono mixture.
+The resulting object is a 1-dimensional array of shape <code class="docutils literal notranslate"><span class="pre">(N_samples,)</span></code> which
+represents the time-series of sample values.
+Subsequent processing typically produces higher-dimensional transformations of the
+time-series, for example, a short-time Fourier transform (<code class="docutils literal notranslate"><span class="pre">librosa.stft</span></code>) produces
+a two-dimensional array of shape <code class="docutils literal notranslate"><span class="pre">(N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+Note that the second (trailing) dimension corresponds to the number of frames in the
+signal, which is proportional to length; the first dimension corresponds to the
+number of frequencies (or more generally, features) measured at each frame.</p>
+<p>When working with multi-channel signals, we may choose to skip the default down-mixing
+step by specifying <code class="docutils literal notranslate"><span class="pre">mono=False</span></code> in the call to <code class="docutils literal notranslate"><span class="pre">librosa.load</span></code>, as in the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">librosa</span>
+
+<span class="c1"># Get the &quot;high-quality&quot; multi-channel version of</span>
+<span class="c1"># an example track</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">ex</span><span class="p">(</span><span class="s1">&#39;trumpet&#39;</span><span class="p">,</span> <span class="n">hq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Load as multi-channel data</span>
+<span class="n">y_stereo</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mono</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting object now has two dimensions instead of one, with <code class="docutils literal notranslate"><span class="pre">y_stereo.shape</span> <span class="pre">==</span>
+<span class="pre">(N_channels,</span> <span class="pre">N_samples)</span></code>.
+This way, we can access the first channel as <code class="docutils literal notranslate"><span class="pre">y_stereo[0]</span></code>, the second channel as
+<code class="docutils literal notranslate"><span class="pre">y_stereo[1]</span></code>, and so on if there are more than two channels.</p>
+<p>Librosa represents data according to the following general pattern:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>trailing dimensions correspond to time (samples, frames, etc)</p></li>
+<li><p>leading dimensions may correspond to channels</p></li>
+<li><p>intermediate dimensions correspond to “features” (or frequencies, harmonics,
+etc).</p></li>
+</ul>
+</div></blockquote>
+<p>This pattern is designed so that indexing is <em>consistent</em> when slicing out
+individual channels.
+This is demonstrated in the examples below.</p>
+</div>
+<div class="section" id="id2">
+<h2>stlReadFirst<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>As a first example, consider computing a short-time Fourier transform of the stereo
+example signal loaded above.
+This is accomplished in exactly the same way as if the signal was mono, that is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D_stereo</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y_stereo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The shape of the resulting STFT is <code class="docutils literal notranslate"><span class="pre">D_stereo.shape</span> <span class="pre">==</span> <span class="pre">(N_channels,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+The slice <code class="docutils literal notranslate"><span class="pre">D_stereo[0]</span></code> then corresponds to the STFT of the first channel <code class="docutils literal notranslate"><span class="pre">y_stereo[0]</span></code>, and <code class="docutils literal notranslate"><span class="pre">D_stereo[1]</span></code> is the STFT of the second channel <code class="docutils literal notranslate"><span class="pre">y_stereo[1]</span></code>, and so on.</p>
+<p>As a more advanced example, we can construct a multi-channel, harmonic spectrogram
+using <cite>librosa.interp_harmonics</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S_stereo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D_stereo</span><span class="p">)</span>
+
+<span class="c1"># Get the default Fourier frequencies</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">fft_frequencies</span><span class="p">(</span><span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
+
+<span class="c1"># We&#39;ll interpolate the first five harmonics of each frequency</span>
+<span class="n">harmonics</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">S_harmonics</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">interp_harmonics</span><span class="p">(</span><span class="n">S_stereo</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">harmonics</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting object has four dimensions now: <code class="docutils literal notranslate"><span class="pre">S_harmonics.shape</span> <span class="pre">==</span> <span class="pre">(N_channels,</span>
+<span class="pre">N_harmonics,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.
+As noted above, the leading dimension corresponds to channels, the trailing
+dimension corresponds to time (frames), and the intermediate dimensions correspond
+to derived features.
+In this way, indexing a specific channel (e.g., <code class="docutils literal notranslate"><span class="pre">S_harmonics[1]</span></code> for the second
+channel) provides the entire feature array derived from the second channel, and
+produces an output of shape <code class="docutils literal notranslate"><span class="pre">(N_harmonics,</span> <span class="pre">N_frequencies,</span> <span class="pre">N_frames)</span></code>.</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>When reading the library documentation, you may come across functions like
+<cite>librosa.stft</cite> which describe the input signal parameter as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">)],</span> <span class="n">real</span><span class="o">-</span><span class="n">valued</span>
+</pre></div>
+</div>
+<p>The “…” here is analogous to Python’s <cite>Ellipsis</cite> object, and in this context, it acts as a place-holder for “0 or more dimensions”.
+This is analogous to numpy’s use of <cite>Ellipsis</cite> to bypass variable numbers of
+dimensions in <cite>numpy.ndarray</cite> objects.
+For example, to slice a single frame <code class="docutils literal notranslate"><span class="pre">n</span></code> out of the multi-channel harmonic spectrogram
+above, you could do either:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The latter is generally preferred as it generalizes to arbitrarily many leading
+dimensions.</p>
+<p>Whenever functions are described as accepting shapes containing “…”, the
+implication is that the (arbitrarily many) leading dimensions are preserved in the
+output unless otherwise stated.</p>
+<p>Some functions accept an <code class="docutils literal notranslate"><span class="pre">axis=</span></code> parameter to specify a target axis along which to
+operate.
+As a general convention, <code class="docutils literal notranslate"><span class="pre">axis=-1</span></code> (the final axis) usually corresponds to “time”
+(or samples, or frames), while <code class="docutils literal notranslate"><span class="pre">axis=-2</span></code> (the second-to-last axis) usually
+corresponds to “frequency” or some other derived feature.</p>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Not all functions in librosa naturally generalize to multi-channel data, though most
+do.
+Similarly, some functions do generalize, but in ways that may not match your
+expectations.
+This section briefly summarizes places where multi-channel support is limited.</p>
+<p><strong>Detectors</strong> with ragged output, for example beat tracking (<cite>librosa.beat</cite>) and
+onset detection (<cite>librosa.onset.onset_detect</cite>) do not support multi-channel inputs.
+This is because the output may have differing numbers of events in each channel, and
+therefore cannot be consistently stored in a <cite>numpy.ndarray</cite> output object.
+In these cases, it is best to either process each channel separately (if they are
+truly independent) or aggregate representations across channels (e.g., by averaging
+features) if they are strongly related.</p>
+<p><strong>Self- and cross-similarity matrices</strong>, as computed by <cite>librosa.segment.recurrence_matrix</cite> have limited multi-channel support.
+This is because the output objects may be sparse data structures (such as <cite>scipy.sparse.csr_matrix</cite>) which do not generalize to more than two dimensions.
+These functions still accept multi-channel input, but flatten the leading dimensions
+(channels) when comparing features between different time-steps.
+If independent similarity matrices are desired, it is recommended to process each
+channel independently.</p>
+<p><strong>Decompositions and sequence alignments</strong>, like similarity matrices, have limited
+support.
+Harmonic-percussive source separation (<cite>librosa.decompose.hpss</cite>) can fully accept
+multi-channel input with independent processing, but other decomposition
+(<cite>librosa.decompose.nn_filter</cite> and <cite>librosa.decompose.decompose</cite>) impose some
+restrictions on how multi-channel inputs are processed.
+Sequence alignment functions like <cite>librosa.decompose.dtw</cite> and
+<cite>librosa.decompose.rqa</cite> operate much like similarity matrix functions, and interpret
+leading dimensions as additional “feature” dimensions which are flattened prior to
+alignment.</p>
+<p><strong>Display</strong> functions have limited multi-channel support.
+<cite>librosa.display.waveshow</cite> can accept single or 2-channel input, though the second
+channel is only used when zoomed out to envelope mode.
+<cite>librosa.display.specshow</cite> does not accept multi-channel input.</p>
+</div>
+<div class="section" id="advanced-uses-and-caveats">
+<h2>Advanced uses and caveats<a class="headerlink" href="#advanced-uses-and-caveats" title="Permalink to this headline">¶</a></h2>
+<p>Multi-channel support is relatively flexible in librosa.
+In particular, you may organize channels over two dimensions or more, although a
+single channel dimension is the most common use case.
+For example, if you want to simultaneously process a collection of stereo recordings
+of equal length, you may collect the signals into an array of shape <code class="docutils literal notranslate"><span class="pre">y.shape</span> <span class="pre">=</span>
+<span class="pre">(N_tracks,</span> <span class="pre">N_channels,</span> <span class="pre">N_samples)</span></code>.
+Any derived data (e.g. spectrograms like in the example above) would then have <em>two</em>
+leading dimensions, corresponding first to track and then to channel within the
+track.
+In theory, any number of leading dimensions can be used, though caution should be
+exercised to minimize memory consumption.</p>
+<p>Note that although many functions preserve channel independence, this is not
+guaranteed in general.
+For example, decibel scaling by <cite>librosa.amplitude_to_db</cite> will compare each channel
+to a reference value which may be derived from <em>all channels simultaneously</em>.
+This can lead to differences in behavior when processing channels independently or
+simultaneously as a multi-channel input.
+Functions which guarantee channel-wise independence are documented accordingly.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Ahmad M. Belbeisi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171031946-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-171031946-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

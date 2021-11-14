@@ -39,32 +39,16 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
     troubleshooting
 
 
-.. toctree::
-    :caption: Code documentation
-    :maxdepth: 1
 
-    core
-    display
-    feature
-    onset
-    beat
-    decompose
-    effects
-    segment
-    sequence
-    util
+.
 
 
 .. toctree::
     :caption: Advanced topics
     :maxdepth: 2
 
-    multichannel
-    filters
-    cache
-    ioformats
-    advanced
-    recordings
+    plane_intersect
+
 
 .. toctree::
     :caption: Reference

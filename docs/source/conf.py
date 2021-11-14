@@ -112,7 +112,7 @@ html_use_modindex = True
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "librosadoc"
-
+html_title = 'Cylinder-based approximation of 3D objects'
 html_logo = 'img/BMW.svg'
 
 html_theme_options = {

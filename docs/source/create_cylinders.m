@@ -1,23 +1,49 @@
-% Approximate given sections of 2D-polygons with cylinders
-% This function uses the 2D-algorithm (approximation of 2D-polygons with
-% circles) in order to approximate each section of the geometry with
-% cylinders. If possible, it reuses cylinders from previous sections (from
-% left to right)
-function [cylinders,cylinders_red] = create_cylinders(polygon_list, y_values, number_circles_per_section, red_radius_factor)
+% Function create_cylinders
+function [cylinders,cylinders_red]=create_cylinders(polygon_list, y_values, number_circles_per_section, red_radius_factor)
+% Plane_intersect computes the intersection of two planes(if any)
+%
+% Inputs:
+%    :polygon_list: normal vector to Plane 1
+%    :y_values: any point that belongs to Plane 1
+%    :number_circles_per_section: normal vector to Plane 2
+%    :red_radius_factor: any point that belongs to Plane 2
+% Outputs:
+%    :cylinders:  is a point that lies on the interection straight line.
+%    :cylinders_red: is the direction vector of the straight line
+% Example:
+%   Determine the intersection of these two planes:
+%.. math::
+%            2x - 5y + 3z = 12 \\ 3x + 4y - 3z = 6
+%|
+% The first plane is represented by the normal vector N1=[2 -5 3]
+%   and any arbitrary point that lies on the plane, ex: A1=[0 0 4]
+%|   The second plane is represented by the normal vector N2=[3 4 -3]
+%   and any arbitrary point that lies on the plane, ex: A2=[0 0 -2]
+%|
+%Test input:
+%   Cylinders has to be formatted, as needed by other group
+%.. code-block:: matlab
+%
+%   y_values = [1,3,4,10];
+%   P1 = [0 0; 0.5 0.75; 1 1; 1.5 0.5; 1.5 -0.5; 1.25 0.3; 1 0; 1.25 -0.3; 1 -1];
+%   P1 = [0 0; 0 1.3; 1.3 1.3; 1.3 0];
+%   P_end1 = [P1(2:end,:);P1(1,:)];
+%   P2 = [0 0; 0 1; 1 1; 1 0];
+%   P_end2 = [P2(2:end,:);P2(1,:)];
+%   P3 = [-0.1 0; -0.1 1; 0.4 0.7; 0.9 1; 0.9 0];
+%   P_end3 = [P3(2:end,:);P3(1,:)];
+%   polygon_list = {{P1,P_end1},{P2,P_end2},{P3,P_end3}};
+%   polygon_list = {{P1,P_end1},{P1,P_end1},{P1,P_end1}};
+%| This function is written by :
+%|                             Nassim Khaled
+%|                             Wayne State University
+%|                             Research Assistant and Phd candidate
+%|
+%If you have any comments or face any problems, please feel free to leave
+%your comments and i will try to reply to you as fast as possible.
 
-% Test input %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % Cylinders has to be formatted, as needed by other group
-% y_values = [1,3,4,10];
-% P1 = [0 0; 0.5 0.75; 1 1; 1.5 0.5; 1.5 -0.5; 1.25 0.3; 1 0; 1.25 -0.3; 1 -1];
-% %P1 = [0 0; 0 1.3; 1.3 1.3; 1.3 0];
-% P_end1 = [P1(2:end,:);P1(1,:)];
-% P2 = [0 0; 0 1; 1 1; 1 0];
-% P_end2 = [P2(2:end,:);P2(1,:)];
-% P3 = [-0.1 0; -0.1 1; 0.4 0.7; 0.9 1; 0.9 0];
-% P_end3 = [P3(2:end,:);P3(1,:)];
-% polygon_list = {{P1,P_end1},{P2,P_end2},{P3,P_end3}};
-% %polygon_list = {{P1,P_end1},{P1,P_end1},{P1,P_end1}};
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 centers_left = [];
 
