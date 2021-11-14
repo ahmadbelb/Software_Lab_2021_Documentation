@@ -79,26 +79,7 @@ warning('off','MATLAB:polyshape:boundary3Points');
 
 
 % [v, f, n, name] = stlReadFirst("Baumraum example complex.stl");
- % stlReadFirst EV3-object and its Motors and Sensors to physical brick.
-            %
-            % Arguments:
-            %     connectionType (string in {'bt', 'usb'}): Connection type
-            %     serPort (string in {'/dev/rfcomm1', '/dev/rfcomm2', ...}): Path to serial port
-            %         (necessary if connectionType is 'bt'). *[OPTIONAL]*
-            %     beep (bool): If true, EV3 beeps if connection has been established. *[OPTIONAL]*
-            %
-            %
-            % ::
-            %
-            %     Example:
-            %          % Setup bluetooth connection via com-port 0
-            %          brick = EV3();
-            %          brick.connect('bt', 'serPort', '/dev/rfcomm0');
-            %          % Setup usb connection, beep when connection has been established
-            %          brick = EV3();
-            %          brick.connect('usb', 'beep', 'on', );
-            %
-            % See also ISCONNECTED / :attr:`isConnected`
+ %     stlReadFirst() (bool): True if virtual brick-object is connected to physical one. *[READ-ONLY]*
 % stlWrite('neubauraum.stl',f,v);
 % stl_file = "neubauraum.stl";
 stl_file = "Combined Shape.stl";
