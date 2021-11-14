@@ -18,19 +18,16 @@
     %             * :meth:`setProperties`
 
     %
-    % *Inputs*:
-    %             * :meth:`stlReadFirst`
-    %             * :meth:`disconnect`
-    %             * :meth:`stopAllMotors`
-    %             * :meth:`beep`
-    %             * :meth:`playTone`
-    %             * :meth:`stopTone`
-    %             * :meth:`tonePlayed`
-    %             * :meth:`setProperties`
-    %
     %
     % High-level class to work with physical bricks.
     %
+    %Notes:
+    % Attributes:
+    %
+    %     debugA (numeric in {0,1,2}): Debug mode. *[WRITABLE]*
+
+
+
     % This is the 'central' class (from user's view) when working with this toolbox. It
     % delivers a convenient interface for creating a connection to the brick and sending
     % commands to it. An EV3-object creates 4 Motor- and 4 Sensor-objects, one for each port.
@@ -46,17 +43,6 @@
     %
     %
     %
-
-     % Inputs:
-     %
-    %     motorA (Motor): Motor-object interfacing port A. See also :class:`Motor`.
-    %     motorB (Motor): Motor-object interfacing port B. See also :class:`Motor`.
-    %     motorC (Motor): Motor-object interfacing port C. See also :class:`Motor`.
-    %     motorD (Motor): Motor-object interfacing port D. See also :class:`Motor`.
-    %     sensor1 (Sensor): Motor-object interfacing port 1. See also :class:`Sensor`.
-    %     sensor2 (Sensor): Motor-object interfacing port 2. See also :class:`Sensor`.
-    %     sensor3 (Sensor): Motor-object interfacing port 3. See also :class:`Sensor`.
-    %     sensor4 (Sensor): Motor-object interfacing port 4. See also :class:`Sensor`.
     % Attributes:
     %     motorA (Motor): Motor-object interfacing port A. See also :class:`Motor`.
     %     motorB (Motor): Motor-object interfacing port B. See also :class:`Motor`.
