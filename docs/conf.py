@@ -157,7 +157,8 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     author, 'manual'),
+     'John Hunter\\and Darren Dale\\and Eric Firing\\and Michael Droettboom'
+     '\\and and the matplotlib development team', 'manual'),
 ]
 
 
@@ -182,21 +183,7 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-# Options for LaTeX output
-# ------------------------
 
-# The paper size ('letter' or 'a4').
-latex_paper_size = 'letter'
 
-# Grouping the document tree into LaTeX files.
-# List of tuples:
-#   (source start file, target name, title, author,
-#    document class [howto/manual])
-
-latex_documents = [
-    ('contents', 'Matplotlib.tex', 'Matplotlib',
-     'John Hunter\\and Darren Dale\\and Eric Firing\\and Michael Droettboom'
-     '\\and and the matplotlib development team', 'manual'),
-]
 
 
