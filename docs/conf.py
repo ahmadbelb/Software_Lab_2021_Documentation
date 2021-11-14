@@ -157,8 +157,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     'John Hunter\\and Darren Dale\\and Eric Firing\\and Michael Droettboom'
-     '\\and and the matplotlib development team', 'manual'),
+     'Ahmad M. Belbeisi\\ Benjamin Sundqvist\\ Cristian Betancourt\\ Chaudhry Taimoor Niaz\\ and the BMW development team', 'manual'),
 ]
 
 
