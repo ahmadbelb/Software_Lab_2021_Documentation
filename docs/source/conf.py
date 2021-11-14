@@ -18,7 +18,9 @@
 # sys.path.insert(0, os.path.abspath("."))
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+srcpath = os.path.abspath(Path(os.path.dirname(__file__)) / '..')
+sys.path.insert(0, srcpath)
+
 # -- Project information -----------------------------------------------------
 
 project = 'Cylinder'
