@@ -16,7 +16,9 @@ import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+path = os.getcwd()
 
+print(path)
 # -- Project information -----------------------------------------------------
 
 project = 'Cylinder'
@@ -40,9 +42,11 @@ release = ''
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
               'sphinx.ext.napoleon','myst_parser']
-matlab_src_dir = "."
+matlab_src_dir = os.getcwd()
 primary_domain = 'mat'
+path = os.getcwd()
 
+print(path)
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
