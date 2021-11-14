@@ -20,8 +20,8 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = 'Cylinder-based approximation of 3D objects'
-copyright = '2021, Ahmad M. Belbeisi'
-author = 'Ahmad M. Belbeisi'
+copyright = '2021, TUM'
+author = 'Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancourt, Chaudhry Taimoor Niaz and the BMW development team'
 
 
 # The short X.Y version
@@ -157,7 +157,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     ["Ahmad M. Belbeisi","Benjamin Sundqvist","Cristian Betancourt","Chaudhry Taimoor Niaz"], 'manual'),
+     author, 'manual'),
 ]
 
 
