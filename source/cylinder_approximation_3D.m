@@ -8,7 +8,7 @@
 % reusing cylinders, whenever possible
  %
     % *List of Functions*:
-    %             * :functions:`stlReadFirst`
+    %             * :meth:`stlReadFirst`
     %             * :meth:`disconnect`
     %             * :meth:`stopAllMotors`
     %             * :meth:`beep`
