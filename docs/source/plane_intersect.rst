@@ -1,55 +1,53 @@
 plane_intersect
 ^^^^^^^^^^^^^
-.. automodule:: source
-
-.. autofunction:: plane_intersect
+.. autofunction:: src.plane_intersect
 
 
 stlReadFirst
 ----------
-.. autofunction:: stlReadFirst
+.. autofunction:: src.stlReadFirst
 
 
 stlread
 ----------
-.. autofunction:: stlread
+.. autofunction:: src.stlread
 
 
 create_sections_initial
 ----------
-.. autofunction:: create_sections_initial
+.. autofunction:: src.create_sections_initial
 
 
 
 
 define_2D_polygons
 ----------
-.. autofunction:: define_2D_polygons
+.. autofunction:: src.define_2D_polygons
 
 rewriteY_value
 ----------
-.. autofunction:: rewriteY_value
+.. autofunction:: src.rewriteY_value
 create_sections
 ----------
-.. autofunction:: create_sections
+.. autofunction:: src.create_sections
 
 
 
 
 define_2D_polygons
 ----------
-.. autofunction:: source.define_2D_polygons
+.. autofunction:: src.define_2D_polygons
 
 
 create_cylinders
 ----------
-.. autofunction:: source.create_cylinders
+.. autofunction:: src.create_cylinders
 
 
 
 plot_cylinders
 ----------
-.. autofunction:: source.plot_cylinders
+.. autofunction:: src.plot_cylinders
 
 
 Before discussing multi-channel, it is worth reviewing how single-channel (monaural)

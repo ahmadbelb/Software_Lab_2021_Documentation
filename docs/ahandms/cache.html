@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caching &mdash; Cylinder-based approximation of 3D objects</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -77,11 +78,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="caching">
+  <section id="caching">
 <h1>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h1>
 <p>This section covers the <em>librosa</em> function cache.  This allows you
 to store and re-use intermediate computations across sessions.</p>
-<div class="section" id="enabling-the-cache">
+<section id="enabling-the-cache">
 <h2>Enabling the cache<a class="headerlink" href="#enabling-the-cache" title="Permalink to this headline">¶</a></h2>
 <p>By default, caching is disabled.  To enable caching, the environment
 variable <cite>LIBROSA_CACHE_DIR</cite> must be set prior to loading <em>librosa</em>.
@@ -105,8 +106,8 @@ To purge the cache directly, call:</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="cache-configuration">
+</section>
+<section id="cache-configuration">
 <h2>Cache configuration<a class="headerlink" href="#cache-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The cache is implemented on top of <a class="reference external" href="https://pythonhosted.org/joblib/memory.html">joblib.Memory</a>.
 The default configuration can be overridden by setting the following environment variables</p>
@@ -123,8 +124,8 @@ The default configuration can be overridden by setting the following environment
 parameters.</p>
 <p>As of 0.7, librosa’s cache wraps (rather than extends) the <cite>joblib.Memory</cite> object.
 The memory object can be directly accessed by <cite>librosa.cache.memory</cite>.</p>
-</div>
-<div class="section" id="cache-levels">
+</section>
+<section id="cache-levels">
 <h2>Cache levels<a class="headerlink" href="#cache-levels" title="Permalink to this headline">¶</a></h2>
 <p>Cache levels operate in a fashion similar to logging levels.
 For small values of <cite>LIBROSA_CACHE_LEVEL</cite>, only the most important (frequently used) data are cached.
@@ -140,8 +141,8 @@ As a result, application code may run faster at the expense of larger disk usage
 </ul>
 </div></blockquote>
 <p>The default cache level is 10.</p>
-</div>
-<div class="section" id="example">
+</section>
+<section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>To demonstrate how to use the cache, we’ll first call an example script twice without caching:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ time -p ./estimate_tuning.py Kevin_MacLeod_-_Vibe_Ace.ogg
@@ -206,8 +207,8 @@ user 4.17
 sys 1.22
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

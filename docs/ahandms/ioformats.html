@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Advanced I/O Use Cases &mdash; Cylinder-based approximation of 3D objects</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -77,11 +78,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="advanced-i-o-use-cases">
+  <section id="advanced-i-o-use-cases">
 <span id="ioformats"></span><h1>Advanced I/O Use Cases<a class="headerlink" href="#advanced-i-o-use-cases" title="Permalink to this headline">¶</a></h1>
 <p>This section covers advanced use cases for input and output which go beyond the I/O
 functionality currently provided by <em>librosa</em>.</p>
-<div class="section" id="read-specific-formats">
+<section id="read-specific-formats">
 <h2>Read specific formats<a class="headerlink" href="#read-specific-formats" title="Permalink to this headline">¶</a></h2>
 <p><em>librosa</em> uses <a class="reference external" href="https://github.com/bastibe/PySoundFile">soundfile</a> and <a class="reference external" href="https://github.com/sampsyo/audioread">audioread</a> for reading audio.
 As of v0.7, librosa uses <cite>soundfile</cite> by default, and falls back on <cite>audioread</cite> only when dealing with codecs unsupported by <cite>soundfile</cite> (notably, MP3, and some variants of WAV).
@@ -93,47 +94,47 @@ For a list of codecs supported by <cite>soundfile</cite>, see the <em>libsndfile
 <p>Librosa’s load function is meant for the common case where you want to load an entire (fragment of a) recording into memory, but some applications require more flexibility.
 In these cases, we recommend using <cite>soundfile</cite> directly.
 Reading audio files using <cite>soundfile</cite> is similar to the method in <em>librosa</em>. One important difference is that the read data is of shape <cite>(nb_samples, nb_channels)</cite> compared to <cite>(nb_channels, nb_samples)</cite> in <code class="xref mat mat-func docutils literal notranslate"><span class="pre">librosa.core.load()</span></code>. Also the signal is not resampled to 22050 Hz by default, hence it would need be transposed and resampled for further processing in <em>librosa</em>. The following example is equivalent to <cite>librosa.load(librosa.util.ex(‘trumpet’))</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kn">import</span> <span class="nn">librosa</span>
-<span class="lineno">2 </span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
-<span class="lineno">3 </span>
-<span class="lineno">4 </span><span class="c1"># Get example audio file</span>
-<span class="lineno">5 </span><span class="n">filename</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">ex</span><span class="p">(</span><span class="s1">&#39;trumpet&#39;</span><span class="p">)</span>
-<span class="lineno">6 </span>
-<span class="lineno">7 </span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
-<span class="lineno">8 </span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
-<span class="lineno">9 </span><span class="n">data_22k</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="mi">22050</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">librosa</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Get example audio file</span>
+<span class="linenos">5</span><span class="n">filename</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">ex</span><span class="p">(</span><span class="s1">&#39;trumpet&#39;</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+<span class="linenos">9</span><span class="n">data_22k</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="mi">22050</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="blockwise-reading">
+</section>
+<section id="blockwise-reading">
 <h2>Blockwise Reading<a class="headerlink" href="#blockwise-reading" title="Permalink to this headline">¶</a></h2>
 <p>For large audio signals it could be beneficial to not load the whole audio file
 into memory. Librosa 0.7 introduced a streaming interface, which can be used to
 work on short fragments of audio sequentially.  <code class="xref mat mat-func docutils literal notranslate"><span class="pre">librosa.stream()</span></code> cuts an input
 file into <em>blocks</em> of audio, which correspond to a given number of <em>frames</em>,
 which can be iterated over as in the following example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kn">import</span> <span class="nn">librosa</span>
-<span class="lineno"> 2 </span>
-<span class="lineno"> 3 </span><span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">get_samplerate</span><span class="p">(</span><span class="s1">&#39;/path/to/file.wav&#39;</span><span class="p">)</span>
-<span class="lineno"> 4 </span>
-<span class="lineno"> 5 </span><span class="c1"># Set the frame parameters to be equivalent to the librosa defaults</span>
-<span class="lineno"> 6 </span><span class="c1"># in the file&#39;s native sampling rate</span>
-<span class="lineno"> 7 </span><span class="n">frame_length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2048</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">22050</span>
-<span class="lineno"> 8 </span><span class="n">hop_length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">22050</span>
-<span class="lineno"> 9 </span>
-<span class="lineno">10 </span><span class="c1"># Stream the data, working on 128 frames at a time</span>
-<span class="lineno">11 </span><span class="n">stream</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s1">&#39;path/to/file.wav&#39;</span><span class="p">,</span>
-<span class="lineno">12 </span>                        <span class="n">block_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-<span class="lineno">13 </span>                        <span class="n">frame_length</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
-<span class="lineno">14 </span>                        <span class="n">hop_length</span><span class="o">=</span><span class="n">hop_length</span><span class="p">)</span>
-<span class="lineno">15 </span>
-<span class="lineno">16 </span><span class="n">chromas</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="lineno">17 </span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
-<span class="lineno">18 </span>   <span class="n">chroma_block</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">chroma_stft</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span>
-<span class="lineno">19 </span>                                              <span class="n">n_fft</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
-<span class="lineno">20 </span>                                              <span class="n">hop_length</span><span class="o">=</span><span class="n">hop_length</span><span class="p">,</span>
-<span class="lineno">21 </span>                                              <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="lineno">22 </span>   <span class="n">chromas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chromas</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">librosa</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">get_samplerate</span><span class="p">(</span><span class="s1">&#39;/path/to/file.wav&#39;</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Set the frame parameters to be equivalent to the librosa defaults</span>
+<span class="linenos"> 6</span><span class="c1"># in the file&#39;s native sampling rate</span>
+<span class="linenos"> 7</span><span class="n">frame_length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2048</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">22050</span>
+<span class="linenos"> 8</span><span class="n">hop_length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">22050</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># Stream the data, working on 128 frames at a time</span>
+<span class="linenos">11</span><span class="n">stream</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s1">&#39;path/to/file.wav&#39;</span><span class="p">,</span>
+<span class="linenos">12</span>                        <span class="n">block_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+<span class="linenos">13</span>                        <span class="n">frame_length</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
+<span class="linenos">14</span>                        <span class="n">hop_length</span><span class="o">=</span><span class="n">hop_length</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">chromas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">17</span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+<span class="linenos">18</span>   <span class="n">chroma_block</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">chroma_stft</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span>
+<span class="linenos">19</span>                                              <span class="n">n_fft</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
+<span class="linenos">20</span>                                              <span class="n">hop_length</span><span class="o">=</span><span class="n">hop_length</span><span class="p">,</span>
+<span class="linenos">21</span>                                              <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos">22</span>   <span class="n">chromas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chromas</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this example, each audio fragment <code class="docutils literal notranslate"><span class="pre">y</span></code> will consist of 128 frames worth of samples,
@@ -142,56 +143,56 @@ Each fragment <code class="docutils literal notranslate"><span class="pre">y</sp
 samples, which ensures that stream processing will provide equivalent results to if the entire
 sequence was processed in one step (assuming padding / centering is disabled).</p>
 <p>For more details about the streaming interface, refer to <code class="xref mat mat-func docutils literal notranslate"><span class="pre">librosa.stream()</span></code>.</p>
-</div>
-<div class="section" id="read-file-like-objects">
+</section>
+<section id="read-file-like-objects">
 <h2>Read file-like objects<a class="headerlink" href="#read-file-like-objects" title="Permalink to this headline">¶</a></h2>
 <p>If you want to read audio from file-like objects (also called <em>virtual files</em>)
 you can use <cite>soundfile</cite> as well.  (This will also work with <code class="xref mat mat-func docutils literal notranslate"><span class="pre">librosa.load()</span></code> and <code class="xref mat mat-func docutils literal notranslate"><span class="pre">librosa.stream()</span></code>, provided
 that the underlying codec is supported by <cite>soundfile</cite>.)</p>
 <p>E.g.: read files from zip compressed archives:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kn">import</span> <span class="nn">zipfile</span> <span class="k">as</span> <span class="nn">zf</span>
-<span class="lineno">2 </span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
-<span class="lineno">3 </span><span class="kn">import</span> <span class="nn">io</span>
-<span class="lineno">4 </span>
-<span class="lineno">5 </span><span class="k">with</span> <span class="n">zf</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;test.zip&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myzip</span><span class="p">:</span>
-<span class="lineno">6 </span>    <span class="k">with</span> <span class="n">myzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;stereo_file.wav&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myfile</span><span class="p">:</span>
-<span class="lineno">7 </span>        <span class="n">tmp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">myfile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="lineno">8 </span>        <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">zipfile</span> <span class="k">as</span> <span class="nn">zf</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+<span class="linenos">3</span><span class="kn">import</span> <span class="nn">io</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">with</span> <span class="n">zf</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;test.zip&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myzip</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="k">with</span> <span class="n">myzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;stereo_file.wav&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myfile</span><span class="p">:</span>
+<span class="linenos">7</span>        <span class="n">tmp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">myfile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="linenos">8</span>        <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Download and read from URL:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
-<span class="lineno">2 </span><span class="kn">import</span> <span class="nn">io</span>
-<span class="lineno">3 </span>
-<span class="lineno">4 </span><span class="kn">from</span> <span class="nn">six.moves.urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="lineno">5 </span>
-<span class="lineno">6 </span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/librosa/librosa/master/tests/data/test1_44100.wav&quot;</span>
-<span class="lineno">7 </span>
-<span class="lineno">8 </span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">io</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">six.moves.urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/librosa/librosa/master/tests/data/test1_44100.wav&quot;</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="write-out-audio-files">
+</section>
+<section id="write-out-audio-files">
 <h2>Write out audio files<a class="headerlink" href="#write-out-audio-files" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://pysoundfile.readthedocs.io/en/latest/">PySoundFile</a> provides output functionality that can be used directly with numpy array audio buffers:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="lineno"> 2 </span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
-<span class="lineno"> 3 </span>
-<span class="lineno"> 4 </span><span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="lineno"> 5 </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rate</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="lineno"> 6 </span>
-<span class="lineno"> 7 </span><span class="c1"># Write out audio as 24bit PCM WAV</span>
-<span class="lineno"> 8 </span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.wav&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;PCM_24&#39;</span><span class="p">)</span>
-<span class="lineno"> 9 </span>
-<span class="lineno">10 </span><span class="c1"># Write out audio as 24bit Flac</span>
-<span class="lineno">11 </span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.flac&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;flac&#39;</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;PCM_24&#39;</span><span class="p">)</span>
-<span class="lineno">12 </span>
-<span class="lineno">13 </span><span class="c1"># Write out audio as 16bit OGG</span>
-<span class="lineno">14 </span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.ogg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;vorbis&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="linenos"> 5</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rate</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># Write out audio as 24bit PCM WAV</span>
+<span class="linenos"> 8</span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.wav&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;PCM_24&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># Write out audio as 24bit Flac</span>
+<span class="linenos">11</span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.flac&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;flac&#39;</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;PCM_24&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># Write out audio as 16bit OGG</span>
+<span class="linenos">14</span><span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;stereo_file.ogg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;vorbis&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
