@@ -40,11 +40,9 @@ release = ''
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
               'sphinx.ext.napoleon','myst_parser']
-matlab_src_dir = os.getcwd()
+matlab_src_dir = "."
 primary_domain = 'mat'
-path = os.getcwd()
 
-print(path)
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,7 +61,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = English
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
