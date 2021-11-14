@@ -67,6 +67,9 @@ Example
 
 .. autofunction:: game
 
+
+.. autofunction:: cut_the_geometry
+
 Using auto-directives
 ---------------------
 
