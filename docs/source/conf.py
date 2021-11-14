@@ -13,7 +13,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-
+import sphinx_rtd_theme
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -41,7 +41,7 @@ release = ''
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
               'sphinx.ext.napoleon','myst_parser','sphinxcontrib.matlab', 'sphinx.ext.autodoc']
-matlab_src_dir = "."
+matlab_src_dir = "/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/source"
 primary_domain = 'mat'
 
 
@@ -74,12 +74,10 @@ pygments_style = 'sphinx'
 
 
 # -- Options for HTML output -------------------------------------------------
-
+import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme"
-
-
-
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -115,16 +113,16 @@ html_use_modindex = True
 # Output file base name for HTML help builder.
 htmlhelp_basename = "librosadoc"
 
-html_logo = 'img/tum.svg'
+html_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.svg'
 
 html_theme_options = {
     'logo_only': True,
     'style_nav_header_background': 'white',
     'analytics_id': 'UA-171031946-1',
 }
-html_static_path = ['_static']
+html_static_path = ['/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static']
 html_css_files = [
-    'css/custom.css',
+    '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/_static/css/custom.css',
 ]
 # -- Options for HTMLHelp output ---------------------------------------------
 
@@ -167,7 +165,7 @@ latex_documents = [
 latex_engine = 'xelatex'
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-latex_logo = 'img/tum.png'
+latex_logo = '/Users/ahmadbelbeisi/Desktop/Software_Lab_2021_Documentation/docs/img/tum.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
