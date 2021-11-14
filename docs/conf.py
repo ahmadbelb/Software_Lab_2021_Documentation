@@ -19,7 +19,7 @@ import os
 
 # -- Project information -----------------------------------------------------
 
-project = 'Cylinder'
+project = 'Cylinder-based approximation of 3D objects'
 copyright = '2021, Ahmad M. Belbeisi'
 author = 'Ahmad M. Belbeisi'
 
@@ -156,8 +156,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'sphinxcontrib-matlabdomain.tex', 'sphinxcontrib-matlabdomain Documentation',
-     'Jorgen Cederberg', 'manual'),
+    (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
+     'Ahmad M. Belbeisi','Benjamin Sundqvist','Cristian Camilo Saenz Betancourt','Chaudhry Taimoor Niaz', 'manual'),
 ]
 
 
@@ -166,7 +166,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'sphinxcontrib-matlabdomain', 'sphinxcontrib-matlabdomain Documentation',
+    (master_doc, 'sphinxcontrib-matlabdomain', 'CylCylinder-based approximation of 3D objectsnd Documentation',
      [author], 1)
 ]
 
