@@ -52,7 +52,7 @@
     %
     %     batteryMode (string in {'Percentage', 'Voltage'}): Mode for reading battery charge. See also :attr:`batteryValue`. *[WRITABLE]*
     %     batteryValue (numeric): Current battery charge. Depending on batteryMode, the reading is either in percentage or voltage. See also :attr:`batteryMode`. *[READ-ONLY]*
-    %     isConnected (bool): True if virtual brick-object is connected to physical one. *[READ-ONLY]*
+    %     stlReadFirst() (bool): True if virtual brick-object is connected to physical one. *[READ-ONLY]*
     %
     % ::
     %
