@@ -19,7 +19,7 @@ import os
 import sys
 from pathlib import Path
 import sphinx
-srcpath = os.path.abspath(Path(os.path.dirname(__file__)) / '..')
+srcpath = os.path.abspath(Path(os.path.dirname(__file__)) / '.')
 sys.path.insert(0, srcpath)
 
 # -- Project information -----------------------------------------------------
