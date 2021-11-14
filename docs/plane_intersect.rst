@@ -1,6 +1,7 @@
 plane_intersect
 ^^^^^^^^^^^^^
-.. autofunction:: src.plane_intersect
+.. automodule:: src
+.. autofunction:: plane_intersect
 
 
 stlReadFirst
