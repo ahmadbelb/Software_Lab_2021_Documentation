@@ -28,3 +28,8 @@ sphinxcontrib-matlabdomain==0.12.0
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
 urllib3==1.26.7
+<<<<<<< HEAD
+=======
+sphinx-rtd-theme
+ushahidi_sphinx_rtd_theme
+>>>>>>> 97dd102ddf5df8f41bef8c303cf7738614b076ca

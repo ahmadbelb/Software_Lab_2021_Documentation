@@ -1,13 +1,3 @@
-Getting Started
-==========================
-
-.. toctree::
-   :maxdepth: 4
-
-.. automodule:: src
-
-.. autofunction:: game
-
 .. sphinxcontrib-matlabdomain documentation master file, created by
    sphinx-quickstart on Tue Jul 17 11:53:15 2018.
    You can adapt this file completely to your liking, but it should at least
@@ -16,8 +6,11 @@ Getting Started
 sphinxcontrib-matlabdomain
 ==========================
 
-**sphinxcontrib-matlabdomain** HELOOOO
-\
+**sphinxcontrib-matlabdomain** is `Sphinx`_ extension to generate API
+documentation for `MATLAB`_, it also provides *autodoc* facilities, that lets
+you generate documentation *automatically* from MATLAB source files. It works
+similar to the  `Python Domain`_.
+
 
 Getting started
 ---------------
@@ -74,9 +67,6 @@ Example
 
 .. autofunction:: game
 
-
-.. autofunction:: cut_the_geometry
-
 Using auto-directives
 ---------------------
 
@@ -99,7 +89,7 @@ Using auto-directives
    :maxdepth: 2
    :caption: Description of my CodeBase:
 
-
+   modules
 
 
 
