@@ -1,35 +1,37 @@
 plane_intersect
 ^^^^^^^^^^^^^
-.. autofunction:: source.plane_intersect
+.. automodule:: source
+
+.. autofunction:: plane_intersect
 
 
 stlReadFirst
 ----------
-.. autofunction:: source.stlReadFirst
+.. autofunction:: stlReadFirst
 
 
 stlread
 ----------
-.. autofunction:: source.stlread
+.. autofunction:: stlread
 
 
 create_sections_initial
 ----------
-.. autofunction:: source.create_sections_initial
+.. autofunction:: create_sections_initial
 
 
 
 
 define_2D_polygons
 ----------
-.. autofunction:: source.define_2D_polygons
+.. autofunction:: define_2D_polygons
 
 rewriteY_value
 ----------
-.. autofunction:: source.rewriteY_value
+.. autofunction:: rewriteY_value
 create_sections
 ----------
-.. autofunction:: source.create_sections
+.. autofunction:: create_sections
 
 
 
