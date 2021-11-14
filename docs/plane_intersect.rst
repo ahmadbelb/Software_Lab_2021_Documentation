@@ -1,9 +1,12 @@
-plane_intersect
-^^^^^^^^^^^^^
 .. automodule:: src
 .. autofunction:: plane_intersect
 
 
+plane_intersect
+^^^^^^^^^^^^^
+
+.. automodule:: src
+.. autofunction:: plane_intersect
 stlReadFirst
 ----------
 .. autofunction:: src.stlReadFirst
