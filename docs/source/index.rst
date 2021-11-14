@@ -1,109 +1,77 @@
-.. sphinxcontrib-matlabdomain documentation master file, created by
-   sphinx-quickstart on Tue Jul 17 11:53:15 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-sphinxcontrib-matlabdomain
-==========================
-
-**sphinxcontrib-matlabdomain** is `Sphinx`_ extension to generate API
-documentation for `MATLAB`_, it also provides *autodoc* facilities, that lets
-you generate documentation *automatically* from MATLAB source files. It works
-similar to the  `Python Domain`_.
+*******
+Cylinder-based approximation of 3D objects
+*******
+`librosa` is a python package for music and audio analysis.  It provides the building
+blocks necessary to create music information retrieval systems.
 
 
-Getting started
----------------
+For a more advanced introduction which describes the package design principles, please refer to the
+`librosa paper <http://conference.scipy.org/proceedings/scipy2015/pdfs/brian_mcfee.pdf>`_ at
+`SciPy 2015 <http://scipy2015.scipy.org>`_.
 
-If you are completely new to `Sphinx`_, follow this `Tutorial`_.
+Citing librosa
+==============
 
-Install **sphinxcontrib-matlabdomain** with
+If you want to cite librosa in a scholarly work, there are two ways to do it.
 
-::
+- If you are using the library for your work, for the sake of reproducibility, please cite the version you used by retrieving the appropriate DOI and citation information from Zenodo:
 
-   pip install sphinxcontrib-matlabdomain
+.. image:: https://zenodo.org/badge/6309729.svg
+   :target: https://zenodo.org/badge/latestdoi/6309729
 
-In order for the Sphinx MATLAB domain to auto-document MATLAB source code, set
-the config value of ``matlab_src_dir`` to the absolute root path. Currently
-only one MATLAB path can be specified, but all subfolders in that tree will be
-searched.
+- If you wish to cite librosa for its design, motivation etc., please cite the paper
+  published at SciPy 2015. [#]_
 
-For convenience the `primary domain <http://sphinx-doc.org/config.html#confval-primary_domain>`_
-can be set to ``mat``.
+.. [#] McFee, Brian, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto.
+    "librosa: Audio and music signal analysis in python."
+    In Proceedings of the 14th python in science conference, pp. 18-25. 2015.
 
-Assuming that the directory structure of the project is ike this:
-
-::
-
-   docs/
-       conf.py
-       index.rst
-       make.bat
-       Makefile
-   src
-       <matlab source files>
-
-The ``docs/conf.py`` would look like this:
-
-.. code-block:: python
-
-   import os
-
-   # other statements
-
-   extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab']
-   this_dir = os.path.dirname(os.path.abspath(__file__))
-   matlab_src_dir = os.path.abspath(os.path.join(this_dir, '..'))
-   primary_domain = 'mat'
-
-Example
--------
-
-.. automodule:: Plot
-
-.. autofunction:: times_two
-
-.. autofunction:: times_two_napoleon
-
-.. autofunction:: game
-
-Using auto-directives
----------------------
-
-* Creating a Sphinx project
-* Modifying ``conf.py`` to include **sphinxcontrib-matlabdomain**  and autodoc.
-* Add ``matlab_src_dir`` with root of MATLAB sources
-* List directives and options
-* Using auto-directives
-* Using napoleon - different style docstrings, that are almost like MATLAB
-* Examples
-
-  * Function
-  * Function in package
-  * Class with inheritance and properties
-  * Class folder (have to use autofunction)
-
-* Known limitations
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Description of my CodeBase:
+    :caption: Getting started
+    :maxdepth: 1
 
-   modules
+    install
+    tutorial
+    troubleshooting
 
 
+.. toctree::
+    :caption: API documentation
+    :maxdepth: 1
 
-Directives
-----------
+    core
+    display
+    feature
+    onset
+    beat
+    decompose
+    effects
+    segment
+    sequence
+    util
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+    :caption: Advanced topics
+    :maxdepth: 2
 
-.. _Sphinx: https://http://www.sphinx-doc.org
-.. _Python Domain: http://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#the-python-domain
-.. _Tutorial: http://www.sphinx-doc.org/en/1.7/tutorial.html
-.. _MATLAB: https://mathworks.com
+    multichannel
+    filters
+    cache
+    ioformats
+    advanced
+    recordings
+
+.. toctree::
+    :caption: Reference
+    :maxdepth: 1
+
+    changelog
+    genindex
+    glossary
+.. automodule:: Plot
+.. autofunction:: create_sections()
+
+.. automodule:: Plot
+   .. autofunction:: Plot.cylinder_approximation_3D

@@ -6,7 +6,68 @@
 % third, maximum allowable 2D-polygon is defined for each section
 % fourth, cylinders are created, using a 2D-algorithm with circles and
 % reusing cylinders, whenever possible
-
+    %
+    % *List of methods*:
+    %             * :meth:`connect`
+    %             * :meth:`disconnect`
+    %             * :meth:`stopAllMotors`
+    %             * :meth:`beep`
+    %             * :meth:`playTone`
+    %             * :meth:`stopTone`
+    %             * :meth:`tonePlayed`
+    %             * :meth:`setProperties`
+    %
+    %
+    % High-level class to work with physical bricks.
+    %
+    % This is the 'central' class (from user's view) when working with this toolbox. It
+    % delivers a convenient interface for creating a connection to the brick and sending
+    % commands to it. An EV3-object creates 4 Motor- and 4 Sensor-objects, one for each port.
+    %
+    %
+    % Notes:
+    %     * Creating multiple EV3 objects and connecting them to different physical bricks has not
+    %       been thoroughly tested yet, but seems to work on a first glance.
+    %     * When an input argument of a method is marked as optional, the argument needs to be
+    %       'announced' by a preceding 2nd argument, which is a string containing the name of the argument.
+    %       For example, Motor.setProperties may be given a power-parameter. The syntax would be as
+    %       follows: *brickObject.motorA.setProperties('power', 50);*
+    %
+    %
+    %
+    % Attributes:
+    %     motorA (Motor): Motor-object interfacing port A. See also :class:`Motor`.
+    %     motorB (Motor): Motor-object interfacing port B. See also :class:`Motor`.
+    %     motorC (Motor): Motor-object interfacing port C. See also :class:`Motor`.
+    %     motorD (Motor): Motor-object interfacing port D. See also :class:`Motor`.
+    %     sensor1 (Sensor): Motor-object interfacing port 1. See also :class:`Sensor`.
+    %     sensor2 (Sensor): Motor-object interfacing port 2. See also :class:`Sensor`.
+    %     sensor3 (Sensor): Motor-object interfacing port 3. See also :class:`Sensor`.
+    %     sensor4 (Sensor): Motor-object interfacing port 4. See also :class:`Sensor`.
+    %     debug (numeric in {0,1,2}): Debug mode. *[WRITABLE]*
+    %
+    %         - 0: Debug turned off
+    %         - 1: Debug turned on for EV3-object -> enables feedback in the console about what firmware-commands have been called when using a method
+    %         - 2: Low-level-Debug turned on -> each packet sent and received is printed to the console
+    %
+    %     batteryMode (string in {'Percentage', 'Voltage'}): Mode for reading battery charge. See also :attr:`batteryValue`. *[WRITABLE]*
+    %     batteryValue (numeric): Current battery charge. Depending on batteryMode, the reading is either in percentage or voltage. See also :attr:`batteryMode`. *[READ-ONLY]*
+    %     isConnected (bool): True if virtual brick-object is connected to physical one. *[READ-ONLY]*
+    %
+    % ::
+    %
+    %     Example:
+    %         # This example expects a motor at port A and a (random) sensor at port 1
+    %          brick = EV3();
+    %          brick.connect('usb');
+    %          motorA = brick.motorA;
+    %          motorA.setProperties('power', 50, 'limitValue', 720);
+    %          motorA.start();
+    %          motorA.waitFor();
+    %          disp(brick.sensor1.value);
+    %          brick.beep();
+    %          delete brick;
+    %
 clc; clear; close all;
 profile off;
 % delete(gcp('nocreate'));
