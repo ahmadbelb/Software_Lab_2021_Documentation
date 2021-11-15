@@ -35,8 +35,7 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
     :maxdepth: 1
 
     install
-    tutorial
-    troubleshooting
+  
 
 
 
