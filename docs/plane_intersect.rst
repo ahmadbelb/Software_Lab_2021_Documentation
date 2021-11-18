@@ -1,9 +1,6 @@
 .. automodule:: src
-.. autofunction:: Runge_Kutta_method.m
-
-
-.. automodule:: Runge_Kutta_method
-.. autofunction:: Runge_Kutta_method
+.. autofunction:: plane_intersect
+.. autoclass:: src.Runge_Kutta_method
 
 plane_intersect
 ^^^^^^^^^^^^^
