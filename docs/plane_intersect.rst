@@ -2,6 +2,9 @@
 .. autofunction:: plane_intersect
 
 
+.. automodule:: Runge_Kutta_method
+.. autofunction:: plane_intersect
+
 plane_intersect
 ^^^^^^^^^^^^^
 
