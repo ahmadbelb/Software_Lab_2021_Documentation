@@ -2,12 +2,11 @@
 
 plane_intersect
 ^^^^^^^^^^^^^
-.. automodule:: src
-.. autoclass:: Runge_Kutta_method
-    :show-inheritance:
-    :members:
+
 .. automodule:: src
 .. autofunction:: plane_intersect
+
+
 stlReadFirst
 ----------
 .. autofunction:: src.stlReadFirst
