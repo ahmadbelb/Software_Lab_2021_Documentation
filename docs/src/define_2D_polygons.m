@@ -1,9 +1,8 @@
 function [polygon_list, y_values] = define_2D_polygons(mesh_list, y_values)
 % define_2D_polygons creates the maximum possible 2D-polygon for each
-% section. That means, the maximum polygon, such that an extrusion of this
+% section That means, the maximum polygon, such that an extrusion of this
 % polygon in the section lies completely within the geometry
-%
-% Inputs:
+%Inputs:
 %       mesh_list: The geometry of each section, stl-like-datastructure
 %       y_values: array of length mesh_list + 1, stores all y_values
 %       between and at the ends of the complete geometry
