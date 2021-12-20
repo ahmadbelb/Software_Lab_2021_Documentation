@@ -7,7 +7,9 @@ plane_intersect
 .. autofunction:: plane_intersect
 
 
-
+stlReadFirst
+----------
+.. autofunction:: src.stlReadFirst
 
 
 stlread
