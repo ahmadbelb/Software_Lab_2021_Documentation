@@ -5,15 +5,15 @@ function area = compute_area_MC(X, Y, radii, X_red, Y_red, radii_red, bounds_x, 
 % some random points that follow a uniform distribution inside a
 % bounding-box. Then, it tests for each point, if it is part of the geometry.
 % Then, it computes the area by computing the fracition of points, 
-% which lie inside the geometry.
-%| Inputs:
+% which lie inside the geometry
+%|Inputs:
 %         X,Y,radii: vectors of center-coordinates and radii of circles,
 %         which are combined to a shape
 %         X_red,Y_red, radii_red: vectors of center-coordinates and radii
 %         of circles, which are subtracted from the shape
 %         bounds_x,bounds_y: bounding box, which lies around the given
-%         shape.
-%| Outputs:
+%         shape
+%|Outputs:
 %         area: approximated area of the given shape
 
 number = 100000;
