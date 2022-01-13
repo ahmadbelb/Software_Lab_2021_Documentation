@@ -42,7 +42,7 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
     :caption: Advanced topics
     :maxdepth: 2
 
-    plane_intersect
+    Cylinder_based_approximation_of_3D_objects
 
 
 .. toctree::
