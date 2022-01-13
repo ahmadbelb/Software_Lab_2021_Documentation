@@ -4,16 +4,16 @@ function [radii,X,Y,radii_red,X_red,Y_red] = create_circles(polygon, max_number_
 % inside the given polygon. The green circles, which are added, are
 % distributed uniformly around the perimeter of the polygon. Red circles
 % are subtracted from edges, that lie on the convex-hull of the polygon. By
-% that, straight edges are approximated with high accuracy.
-%| Inputs:
+% that, straight edges are approximated with high accuracy
+%|Inputs:
 %         polygon: The polygon, that should be approximated
 %         max_number_circles: The number of green circles, that is
 %         distributed uniformly around the perimeter of the polygon. It is
 %         the maximum number, as the creation of some circles might fail.
 %         red_radius_factor: The largest possible radius of red circles is
 %         determined by the larges possible radius of green circles
-%         multiplied by this factor.
-%| Outputs:
+%         multiplied by this factor
+%|Outputs:
 %         X,Y,radii: vectors of center-coordinates and radii of circles,
 %         which are combined to form a shape
 %         X_red,Y_red, radii_red: vectors of center-coordinates and radii
