@@ -1,9 +1,9 @@
 function [triangle_region] = define_triangle_region(F,V)
 % define_triangle_region creates a polyshape as the union of several 
 % triangles (all in 2D)
-%| Inputs:
+%|Inputs:
 %         F,V: faces, and vertices of all triangles
-%| Outputs:
+%|Outputs:
 %         triangle_region: final polygon given as polyshape-object
 
 number_triangles = size(F,1);

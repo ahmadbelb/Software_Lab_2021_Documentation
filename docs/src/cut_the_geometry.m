@@ -1,18 +1,18 @@
-%{
-WHAT DOES THIS FUNCTION DO?
-Divides a geometry from STL format into two parts at a value in the Y axis
-
-INPUT: 3 matrices from a STL file [Finput],[Vinput],[Ninput]  
-
-OUTPUT: 2 geometries in STL-like matrix format:
-The green part "GR" is the geometry before the cutvalue [FGR],[VGR],[NGR]
-Red part "RD" is the geometry after the cutvalue [FRD],[VRD],[NRD]
-
-STL MATRICES
-[F...]= Faces matrix
-[V...]= Vertices matrix
-[N...]= Normal vectors matrix 
-%}
+%
+%WHAT DOES THIS FUNCTION DO?
+%Divides a geometry from STL format into two parts at a value in the Y axis
+%
+%|Inputs: 3 matrices from a STL file [Finput],[Vinput],[Ninput]  
+%
+%|Outputs: 2 geometries in STL-like matrix format:
+%The green part "GR" is the geometry before the cutvalue [FGR],[VGR],[NGR]
+%Red part "RD" is the geometry after the cutvalue [FRD],[VRD],[NRD]
+%
+%STL MATRICES
+%[F...]= Faces matrix
+%[V...]= Vertices matrix
+%[N...]= Normal vectors matrix 
+%
 
 function [FGR,VGR,NGR,FRD,VRD,NRD]=cut_the_geometry(Finput,Vinput,Ninput,cutvalue)
 
