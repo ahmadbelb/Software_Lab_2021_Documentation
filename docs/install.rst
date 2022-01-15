@@ -24,7 +24,7 @@ The *Cylinder-based approximation of 3D objects* package is structured as collec
 
   - librosa
 
-    - :ref:`2D_approximation <beat>`
+    - :ref:`2D_approximation <2D_approximation>`
         Functions for estimating tempo and detecting beat events.
 
     - :ref:`librosa.core <core>`
