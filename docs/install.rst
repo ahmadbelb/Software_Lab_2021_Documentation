@@ -231,7 +231,8 @@ Since the Blue Triangles are intersected, they have to be redefined with a trian
 
  .. image:: img/Fig1.png
    :width: 300
-   :alt: Figure 7: To cut the mesh-geometry into two parts, some triangles need to be redefined.
+   :alt: Figure 7 To cut the mesh-geometry into two parts, some triangles need to be redefined.
+   :align: center
 
  
 
