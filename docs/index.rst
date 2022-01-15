@@ -40,32 +40,32 @@ This can be achieved by executing the following command::
 
 .. toctree::
     :caption: 2D Approximation
-    :maxdepth: 2
+    
 
     2D_approximation
 
 .. toctree::
     :caption: 3D Approximation
-    :maxdepth: 2
+    
 
     3D_approximation
 
 .. toctree::
     :caption: STL Import
-    :maxdepth: 2
+    
 
     stl_import
 
 
 .. toctree::
     :caption: Visualization
-    :maxdepth: 2
+    
 
     visualization
 
 .. toctree::
     :caption: Reference
-    :maxdepth: 2
+    
 
     Reference
 
