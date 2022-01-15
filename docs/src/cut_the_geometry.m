@@ -6,7 +6,8 @@ function [FGR,VGR,NGR,FRD,VRD,NRD]=cut_the_geometry(Finput,Vinput,Ninput,cutvalu
 % :[Finput],[Vinput],[Ninput]: 3 matrices from a STL file  
 % 
 %Outputs: 
-% 2 geometries in STL-like matrix format:
+%2 geometries in STL-like matrix format:
+%
 % :[FGR],[VGR],[NGR]: The green part "GR" is the geometry before the cutvalue 
 % :[FRD],[VRD],[NRD]: Red part "RD" is the geometry after the cutvalue 
 % 
