@@ -30,9 +30,10 @@ stlWrite
 ----------
 .. autofunction:: src.stlWrite
 
-simple_cube.stlstlGetFormat
+
+stlGetFormat
 ----------
-.. autofunction:: src.simple_cube.stlstlGetFormat
+.. autofunction:: src.stlGetFormat
 
 
 
