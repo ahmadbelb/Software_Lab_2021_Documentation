@@ -1,5 +1,13 @@
-**Students:**
+*******
+Cylinder-based approximation of 3D objects
+*******
 
+
+Contributors 
+^^^^^^^^
+
+Students:
+~~~~~~~~
 * Ahmad M. Belbeisi 
 
 * Cristian Saenz Betancourt 
@@ -8,11 +16,11 @@
 
 * Benjamin Sundqvist 
 
-**Supervised by:**
-
+Supervised by:
+~~~~~~~~
 * Giovanni Filomeno, M.Sc. 
 
-* Moustafa Alsayed Ahmad, M.Sc.
+* Moustafa Alsayed Ahmad, M.Sc. 
 
 Introduction 
 ^^^^^^^^
@@ -39,6 +47,7 @@ This can be achieved by executing the following command::
 2D Approximation
 ^^^^^^^^
 .. toctree::
+    :caption: 2D Approximation
     
 
     2D_approximation
@@ -47,6 +56,7 @@ This can be achieved by executing the following command::
 3D Approximation
 ^^^^^^^^
 .. toctree::
+    :caption: 3D Approximation
     
     
 
@@ -55,6 +65,7 @@ This can be achieved by executing the following command::
 STL Import
 ^^^^^^^^
 .. toctree::
+    :caption: STL Import
     
     
 
@@ -63,6 +74,7 @@ STL Import
 Visualization
 ^^^^^^^^
 .. toctree::
+    :caption: Visualization
     
 
     visualization
@@ -71,7 +83,7 @@ Visualization
 Reference
 ^^^^^^^^
 .. toctree::
-    
+    :caption: Reference
     
 
     Reference
