@@ -25,7 +25,7 @@ In 2D, the task consists of adding and subtracting circles to approximate a 2D-p
 
  
 
-**Addition of green circles **
+**Addition of green circles**
 
  
 
@@ -34,7 +34,8 @@ Starting from a point on the boundary, the maximum radius of a green circle is f
  
 
  
-
+.. image:: img/Fig1.png
+   :width: 300
 Figure 2: The radius of a green circle is gradually increased until it reaches the boundary. It is defined to always touch a certain point at the boundary. 
 
  
@@ -43,12 +44,9 @@ The initial idea was to always place 5 circles per edge. That means, these 5 cir
 
  
 
-The maximum radius of each green circle is bounded. It is chosen to be: 
+The maximum radius of each green circle is bounded. It is chosen to be::
+    𝑟𝑚𝑎𝑥=𝑥𝑚𝑎𝑥+𝑦𝑚𝑎𝑥−𝑥𝑚𝑖𝑛−𝑦𝑚𝑖𝑛 
 
-𝑟𝑚𝑎𝑥=𝑥𝑚𝑎𝑥+𝑦𝑚𝑎𝑥−𝑥𝑚𝑖𝑛−𝑦𝑚𝑖𝑛 
- 
-
- 
 
 where x and y are the coordinates of the vertices of the polygon. By that, it is ensured that the radius of every green circle is in the correct order of magnitude, so the result does not depend on the scaling of the polygon. 
 
@@ -68,7 +66,8 @@ After the tangent point is determined, the maximum possible circle is found usin
 
 First, it is observed that a very large red circle creates a straight edge, if it is subtracted from a green circle. Mathematically, if the radius of the red circles goes to infinity, the edge becomes a perfect line. Using this idea, any edge of the 2D-polygon can be perfectly represented, if an arbitrarily large red circle can be subtracted. This large red circle must not cross any other edges of the 2D-polygon, as it would subtract some parts of the polygon. This condition is fulfilled for any edge, which is included in the convex hull of the polygon. So, all these edges, red circles will be subtracted. Therefore, as mentioned previously, green circles are allowed to overlap the polygon at the edges of the convex hull. The surplus of green circles at these edges will then be subtracted by the red circles. 
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 3: A large red circle (only a small rectangular fraction is visible) is subtracted from some green circles. That leads to a very accurate description of the straight edge. 
 
@@ -78,7 +77,8 @@ To implement this subtraction, all edges which are included in the boundary of t
 
  
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 4: The red circles, that are subtracted from the geometry, are defined by two crossing points and the radius. 
 
@@ -88,7 +88,7 @@ The ratio of the radius of the red circles divided by the maximum radius of the 
 
  
 
-**Post Processing: Removing green circles **
+**Post Processing: Removing green circles**
 
  
 
@@ -104,13 +104,14 @@ Secondly, some circles are removed if they do not contribute significantly to th
 
  
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 5: The removal of circles was tested in three small examples. Each started with 40 equally distributed circles around the perimeter. Here, the resulting circle-approximation is shown. A drastic reduction of circles can be observed, while the accuracy is still very high. 
 
  
 
-**Computation of the area **
+**Computation of the area**
 
  
 
@@ -136,29 +137,23 @@ Workflow
 
  
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 6: Overview over the workflow for the 3D approximation of objects 
 
-Read an STL file  
+**Read an STL file**
+
+The geometry is read using external functions [5],[6]. The STL file can be binary or ASCII. Three matrices are generated as the output::
+
+    [F] = Faces matrix, each row contains the 3 vertices of a face/triangle. 
+    [V] = Vertices matrix, each row contains the x,y,z coordinates of a vertex. 
+    [N] = Normal vector matrix, each row contains the 3 components of the normal vector of a face/triangle. 
+    
 
  
 
-The geometry is read using external functions [5],[6]. The STL file can be binary or ASCII. Three matrices are generated as the output. 
-
- 
-
-[F] = Faces matrix, each row contains the 3 vertices of a face/triangle. 
-
-[V] = Vertices matrix, each row contains the x,y,z coordinates of a vertex. 
-
-[N] = Normal vector matrix, each row contains the 3 components of the normal vector of a face/triangle. 
-
- 
-
- 
-
-Choose y-values for cutting 
+**Choose y-values for cutting** 
 
  
 
@@ -216,7 +211,7 @@ t
 
  
 
-Create sections by cutting the geometry 
+**Create sections by cutting the geometry** 
 
  
 
@@ -234,7 +229,8 @@ In a for-loop, all the triangles of the geometry are classified into 3 categorie
 
 Since the Blue Triangles are intersected, they have to be redefined with a triangulation process such that the intersection line between the two planes is an edge of two of the new triangles. In the general case, the intersection line crosses the triangle through the two edges, generating a smaller triangle and a quadrilateral. The quadrilateral is divided into two new triangles. The new three resulting triangles are saved either in the New Green Geometry or in the New Red Geometry according to their location.  
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 7: To cut the mesh-geometry into two parts, some triangles need to be redefined. 
 
@@ -245,14 +241,15 @@ The previously described function is used as many times as the number of cutting
  
 
  
-
+.. image:: img/Fig1.png
+   :width: 300
 Figure 8: Before and after dividing the geometry into sections. 
 
  
 
  
 
-Define 2D-polygons 
+**Define 2D-polygons** 
 
  
 
@@ -284,7 +281,7 @@ At the end of this step, 2D-polygons and corresponding intervals on the y-axis a
 
  
 
-Reduce number of 2D-polygons 
+**educe number of 2D-polygons** 
 
  
 
@@ -296,7 +293,7 @@ After the new y-values are chosen, the geometry is now cut again using these new
 
  
 
-Create cylinders 
+**reate cylinders** 
 
  
 
@@ -376,7 +373,8 @@ The intersection of cubes and a cylinder: In this example, the effectiveness of 
 
  
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 10: Example geometry: Combined shape of cubes and a cylinder. 
 
@@ -386,7 +384,8 @@ Figure 10: Example geometry: Combined shape of cubes and a cylinder.
 
 Rectangular prism with a hole: With this geometry, the performance of the algorithm in the presence of holes was tested. The output also shows that the function to choose the cutting values works correctly, since those values are located mostly in the region of the hole where the cross section changes considerably. 
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 11: Example object: Rectangle with a hole. 
 
@@ -395,7 +394,8 @@ Figure 11: Example object: Rectangle with a hole.
 Pyramid: The performance of approximated inclined faces and sharp edges was tested. 
 
  
-
+.. image:: img/Fig1.png
+   :width: 300
  
 
 Figure 12: Example object: Pyramid 
@@ -406,7 +406,8 @@ Figure 12: Example object: Pyramid
 
 Torus: The figure shows that curved surfaces can be approximated. When more accuracy is required, the amount of cutting points and cylinder has to be increased. 
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 13: Example object: Torus 
 
@@ -426,7 +427,8 @@ The quality of the approximation depends on all the different parameters that we
 
 CASE OF STUDY: Drivetrain assembly space (Bauraum) 
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 14: Example object and case of study: Assembly space for a drivetrain. 
 
@@ -455,12 +457,14 @@ Computations are accurate
  
 
  
-
+.. image:: img/Fig1.png
+   :width: 300
  
 
 Figure 15: Convergence plot for two different algorithms. The quality is measured by the percentage of approximated volume. The effort is the number of cylinders that is used for that approximation. 
 
- 
+ .. image:: img/Fig1.png
+   :width: 300
 
 Figure 16: Runtime for two different algorithms. The runtime is compared to the number of cylinders. 
 
