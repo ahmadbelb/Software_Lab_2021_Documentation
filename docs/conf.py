@@ -50,7 +50,7 @@ release = ''
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.matlab',
               'sphinx.ext.napoleon','myst_parser']
-matlab_src_dir = os.path.abspath(os.getcwd())
+matlab_src_dir = os.path.dirname(os.path.abspath(__file__))
 primary_domain = 'mat'
 
 
@@ -217,6 +217,6 @@ texinfo_documents = [
 ]
 
 
-
+add_module_names = False
 
 
