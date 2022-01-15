@@ -38,14 +38,13 @@ Random Circle Packing [1]:  The source code fills a rectangle with tangent circl
 
 Several attempts were made to improve the code and to make it more adaptable, such as allowing the movement of the centers and the possibility to be applied in any type of polygon (boundary). Nonetheless, it was no longer used in the project because it required a lot of circles and the randomness implied long running times.  
 
- 
-.. image:: img/Fig1.png
-   :width: 300
- 
 
- 
 
-Figure 1: Circle Packing 
+ .. image:: img/Fig1.png
+   :alt: Figure 1 Circle Packing 
+   :align: center
+
+
 
 Collins and Stephenson Circle Packing [2]: It consists of a configuration of circles with a specified pattern of tangencies defined in a given triangulation. This method comprises a system of nonlinear equations to find the radii, resulting in a complex mathematical problem. 
 

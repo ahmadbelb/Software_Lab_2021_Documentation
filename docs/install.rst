@@ -230,7 +230,6 @@ In a for-loop, all the triangles of the geometry are classified into 3 categorie
 Since the Blue Triangles are intersected, they have to be redefined with a triangulation process such that the intersection line between the two planes is an edge of two of the new triangles. In the general case, the intersection line crosses the triangle through the two edges, generating a smaller triangle and a quadrilateral. The quadrilateral is divided into two new triangles. The new three resulting triangles are saved either in the New Green Geometry or in the New Red Geometry according to their location.  
 
  .. image:: img/Fig1.png
-   :width: 300
    :alt: Figure 7 To cut the mesh-geometry into two parts, some triangles need to be redefined.
    :align: center
 
