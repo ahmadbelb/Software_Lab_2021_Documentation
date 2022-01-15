@@ -60,7 +60,12 @@ The first task is to import a 3D geometry from an STL file. This volume should t
 For a quick introduction to using Cylinder-based approximation of 3D objects, please refer to the :doc:`tutorial`.
 
 
+Running the code 
+-----------------
+The simplest way to use *Cylinder-based approximation of 3D objects* is through running the main file  
+This can be achieved by executing the following command::
 
+    cylinder_approximation_3D.m
 
 
 
