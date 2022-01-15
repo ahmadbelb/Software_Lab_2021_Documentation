@@ -326,51 +326,39 @@ In the two previous sections, many parameters were mentioned, that influence the
 .. list-table:: Title
    :widths: 25 25 50
    :header-rows: 1
-
    * - Parameter 
      - Explanation 
      - Useful values 
-
    * - max_number_circles 
      -Number of circles per polygon. It is the maximum, as some circles might fail to be created. 
      - ca. 20-80 
-
    * - red_radius_factor 
      - Radius of the red circles in the 2D-approximation. It is the ratio of the radius of red circles divided by the maximum radius of the green circles. 
      - Depending on n_sides: ca. 10-50  
-
    * - accuracy_factor  
      - Used when removing close circles. Minimum distance between two circles normalized by the radius. 
      - ca. 0.01  
-
    * - min_area_remain  
      - Used when removing circles based on the area. This is the minimum area relative to the total area that has to remain after removing circles.  
      - ca. 0.99-0.9995  
-
    * - max_area_remove  
      - Used when removing circles based on the area. This is the maximum area relative to the total area that may be removed per circle.  
      - ca. 0.00005-0.005    
-
    * - n_sides  
      - Number of sides for the approximation of circles by regular polygons. (Which is used for area computation of the final shape)  
      - ca. 200-600  
-
    * - number_of_sections  
      - Minimum number of sections for the cutting. 
      - ca. 10-100  
-
    * - area_percentage_parallel  
      - Used when choosing the y-values for the cuts. Part of the total cross-sectional area has to lie at a y-plane, such that this y-value is chosen. 
      - ca. 0.005-0.05  
-
    * - ends_offset_fraction  
      - Used when creating the sections. Determines portion of the ends of the geometry, which may be cut away, as no cylinders fit there.  
      - ca. 0.05-0.5  
-
    * - tol, tol_…  
      - Tolerances for the definition of 2D-polygons 
      - ca. 1e-6   
-
    * - maximal_area_difference-ratio  
      - Used when neglecting some sections and the corresponding cuts. It gives a measure on when to keep the cuts.  
      - ca. 0.995    
@@ -379,11 +367,112 @@ In the two previous sections, many parameters were mentioned, that influence the
 
 Results 
 -----------------
+Initially, the algorithm was used on simple geometries (e.g. cubes, pyramid, torus) to debug the code and ensure the correct performance by approximating sharp edges, holes and curved surfaces.  
 
+ 
+
+The intersection of cubes and a cylinder: In this example, the effectiveness of the subtracting process was tested. The straight lines/sharp edges were correctly approximated. 
+
+ 
+
+ 
+
+Figure 10: Example geometry: Combined shape of cubes and a cylinder. 
+
+ 
+
+ 
+
+Rectangular prism with a hole: With this geometry, the performance of the algorithm in the presence of holes was tested. The output also shows that the function to choose the cutting values works correctly, since those values are located mostly in the region of the hole where the cross section changes considerably. 
+
+ 
+
+Figure 11: Example object: Rectangle with a hole. 
+
+ 
+
+Pyramid: The performance of approximated inclined faces and sharp edges was tested. 
+
+ 
+
+ 
+
+Figure 12: Example object: Pyramid 
+
+ 
+
+ 
+
+Torus: The figure shows that curved surfaces can be approximated. When more accuracy is required, the amount of cutting points and cylinder has to be increased. 
+
+ 
+
+Figure 13: Example object: Torus 
+
+Quality of the approximation 
+
+ 
+
+Overall, the algorithm can produce good approximations of STL-geometries with a reasonable number of cylinders. However, the computation time is quite high for complex geometries. The quality of the approximation is tested by comparing the volumes of the original with the approximated geometry. As the approximation lies entirely inside the geometry, an increase in the volume means improvement of the result. 
+
+The area of the circle-approximations is computed as described earlier. Together with the length of each section, the volume can easily be computed. The volume of the original STL file is computed using a code from [8]. 
+
+The quality of the approximation depends on all the different parameters that were explained in the previous chapter. 
+
+ 
+
+ 
+
+CASE OF STUDY: Drivetrain assembly space (Bauraum) 
+
+ 
+
+Figure 14: Example object and case of study: Assembly space for a drivetrain. 
 
 Convergence 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Two versions of the algorithm were used for further studies based on the drivetrain assembly space (Bauraum) 
 
+ 
+Algorithm A  
+
+Reuses and removes cylinders  
+
+Computations take longer 
+
+One of the main goals of the project was to implement this algorithm 
+ 
+
+Algorithm B  
+
+Doesn’t reuse nor remove cylinders 
+
+Comparatively faster but uses a higher number of cylinders 
+
+Computations are accurate  
+
+ 
+
+ 
+
+ 
+
+Figure 15: Convergence plot for two different algorithms. The quality is measured by the percentage of approximated volume. The effort is the number of cylinders that is used for that approximation. 
+
+ 
+
+Figure 16: Runtime for two different algorithms. The runtime is compared to the number of cylinders. 
+
+
+
+Discussion  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If we compare the volume approximation against the number of cylinders for both the algorithms, algorithm B seems to output a more accurate approximation due to the higher number of cylinders. However, algorithm A reaches an approximation of almost 98%, which is comparable to algorithm B, and is still decent considering it uses significantly fewer cylinders in comparison to algorithm B.  
+
+ 
+
+Furthermore, the running time comparison against the number of cylinders for both the algorithms have an increased running time as the number of cylinders increase. However, algorithm A takes significantly more time in comparison to algorithm B. This is due to the fact that there are many iterations in algorithm A, which continuously reuses and removes cylinders, and that repeating step takes a significant portion of the computation time. Meanwhile, algorithm B on the other hand is much faster in comparison due as there are no iterations to remove nor reuse any cylinders. 
 
 Conclusions  
 -----------------
