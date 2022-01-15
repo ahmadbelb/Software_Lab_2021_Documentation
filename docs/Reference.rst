@@ -1,8 +1,5 @@
-Reference
-^^^^^^^^
-
- Random circle packing: 
- ~~~~~~~~
+Random circle packing: 
+~~~~~~~~
 
  .. [#] Ryan O'Hara (2022). Random Circle Packing in a Rectangle with DXF Output (https://www.mathworks.com/matlabcentral/fileexchange/71088-random-circle-packing-in-a-rectangle-with-dxf-output), MATLAB Central File Exchange. Retrieved January 8, 2022. 
 
