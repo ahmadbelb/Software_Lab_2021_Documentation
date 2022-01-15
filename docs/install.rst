@@ -323,14 +323,15 @@ Parameter Overview
 In the two previous sections, many parameters were mentioned, that influence the result of the cylinder-approximation of 3D-objects. For further improvements to the code, these parameters could be modified. The following table gives an overview of the most important parameters of the code. The names correspond to the variables used in the MATLAB code. 
 
 
-.. list-table:: Title
-   :widths: 25 100 50
+.. list-table:: Overview of the parameters inside the code
+   :widths: 25 75 25
    :header-rows: 1
+
    * - Parameter 
      - Explanation 
      - Useful values 
    * - max_number_circles 
-     -Number of circles per polygon. It is the maximum, as some circles might fail to be created. 
+     - Number of circles per polygon. It is the maximum, as some circles might fail to be created. 
      - ca. 20-80 
    * - red_radius_factor 
      - Radius of the red circles in the 2D-approximation. It is the ratio of the radius of red circles divided by the maximum radius of the green circles. 
@@ -361,7 +362,7 @@ In the two previous sections, many parameters were mentioned, that influence the
      - ca. 1e-6   
    * - maximal_area_difference-ratio  
      - Used when neglecting some sections and the corresponding cuts. It gives a measure on when to keep the cuts.  
-     - ca. 0.995    
+     - ca. 0.995  
 
 
 
