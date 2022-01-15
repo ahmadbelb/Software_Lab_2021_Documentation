@@ -5,15 +5,15 @@ function [volume_approximated] = plot_cylinders(cylinders,cylinders_red,y_values
 % Between 2 y-values (in one section), there are always the same cylinders.
 % As the area of each crossection is given in the process also the volume
 % of the cylinder-geometry is computed and returned.
-%|Inputs:
-%         cylinders: list of all cylinders, which are added to the geometry.
+%| Inputs:
+%|         cylinders: list of all cylinders, which are added to the geometry.
 %          It consists of the coordinates for both endpoints of the cylinders 
 %          and the radius
-%         cylinders_red: list of all cylinders, which are subtracted from
+%|         cylinders_red: list of all cylinders, which are subtracted from
 %          the geometry. Same structure, as cylinders
-%         y_values: between these y-values, the crossections are constant
-%|Outputs:
-%         volume_approximated: volume of the given cylinder-geometry
+%|         y_values: between these y-values, the crossections are constant
+%| Outputs:
+%|         volume_approximated: volume of the given cylinder-geometry
 
 volume_approximated = 0;
 

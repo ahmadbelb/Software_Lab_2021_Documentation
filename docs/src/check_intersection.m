@@ -1,10 +1,10 @@
 function intersect = check_intersection(end1,end2,center,radius)
 % check_intersection determines, wether a line defined by the points end1 and end2
 % overlaps with a circle defined by the center point and the radius
-%|Inputs:
+%| Inputs:
 %         end1,end2: defines the line
 %         center,radius: defines the circle
-%|Outputs:
+%| Outputs:
 %         intersect: boolean value, if there is an intersection
 
 x1 = end1(1);

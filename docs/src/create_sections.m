@@ -4,12 +4,12 @@ function [mesh_list, y_values] = create_sections(F,V,N,number_of_sections_or_vec
 % with uniform thickness. If a vector of y-values is given, it cuts the 
 % geometry at these y-values. The cuts are performed at x-z-planes at the 
 % corresponding y-values.
-%|Inputs:
+%| Inputs:
 %         F,V,N: faces, vertices and normal-vectors of the given geometry
 %         number_of_sections_or_vector: if it's a number, the geometry is
 %         cut into this number of uniformly thick sections. If it's a
 %         vector, these are the y-values, at which the geometry is cut.
-%|Outputs:
+%| Outputs:
 %         mesh_list: The geometry of each section, stl-like-datastructure. It
 %         consists of faces, vertices and normal vectors
 %         y_values: array of length mesh_list + 1, stores all y_values
