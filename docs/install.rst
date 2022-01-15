@@ -20,8 +20,8 @@ to install system-wide, or::
 
 to install just for your own user.
 
-.. toctree::
-    :caption: Tutorial
-    :maxdepth: 2
+Tutorial
+~~~~
 
+.. toctree::
     tutorial
