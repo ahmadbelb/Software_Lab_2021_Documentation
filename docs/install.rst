@@ -20,7 +20,6 @@ to install system-wide, or::
 
 to install just for your own user.
 
-
 Tutorial
 ^^^^^^^^
 
