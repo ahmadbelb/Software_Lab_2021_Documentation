@@ -41,7 +41,7 @@ Several attempts were made to improve the code and to make it more adaptable, su
  .. figure:: img/Fig1.png
    :align: center
 
-   This is the caption of the figure.
+   Figure 1: Circle Packing 
 
 
 

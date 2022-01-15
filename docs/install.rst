@@ -34,9 +34,10 @@ Starting from a point on the boundary, the maximum radius of a green circle is f
  
 
  
-.. image:: img/Fig1.png
-   :width: 300
-Figure 2: The radius of a green circle is gradually increased until it reaches the boundary. It is defined to always touch a certain point at the boundary. 
+ .. figure:: img/Fig2.png
+   :align: center
+
+   Figure 2: The radius of a green circle is gradually increased until it reaches the boundary. It is defined to always touch a certain point at the boundary. 
 
  
 
@@ -66,10 +67,12 @@ After the tangent point is determined, the maximum possible circle is found usin
 
 First, it is observed that a very large red circle creates a straight edge, if it is subtracted from a green circle. Mathematically, if the radius of the red circles goes to infinity, the edge becomes a perfect line. Using this idea, any edge of the 2D-polygon can be perfectly represented, if an arbitrarily large red circle can be subtracted. This large red circle must not cross any other edges of the 2D-polygon, as it would subtract some parts of the polygon. This condition is fulfilled for any edge, which is included in the convex hull of the polygon. So, all these edges, red circles will be subtracted. Therefore, as mentioned previously, green circles are allowed to overlap the polygon at the edges of the convex hull. The surplus of green circles at these edges will then be subtracted by the red circles. 
 
- .. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig3.png
+   :align: center
 
-Figure 3: A large red circle (only a small rectangular fraction is visible) is subtracted from some green circles. That leads to a very accurate description of the straight edge. 
+   Figure 3: A large red circle (only a small rectangular fraction is visible) is subtracted from some green circles. That leads to a very accurate description of the straight edge. 
+
+
 
  
 
@@ -77,10 +80,12 @@ To implement this subtraction, all edges which are included in the boundary of t
 
  
 
- .. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig4.png
+   :align: center
 
-Figure 4: The red circles, that are subtracted from the geometry, are defined by two crossing points and the radius. 
+   Figure 4: The red circles, that are subtracted from the geometry, are defined by two crossing points and the radius.
+
+ 
 
  
 
@@ -103,11 +108,12 @@ Firstly, if 2 circles have almost the same center-point, only the one with the l
 Secondly, some circles are removed if they do not contribute significantly to the final area. Ideally, all possible combinations of circles would be considered. Then, the combination which uses the smallest number of green circles while the area remains above a certain threshold would be chosen. This strategy is not feasible, as the computation of the area of the resulting shape is one of the computationally most expensive parts of the algorithm. Instead, a heuristic approach is used to remove some circles. First, they are sorted by the radius. Starting with the smallest circle, the area of the approximation without this circle is computed. If the area remains above a certain value and the loss of area in this one step is small enough, the respective circle is deleted. This procedure is repeated once for every circle. In practice, this has resulted in a significant reduction of the number of circles while keeping the computational effort relatively small. This approach introduces 2 new parameters, namely the 2 thresholds for the area. One parameter defines the minimum ratio of the initial area that needs to remain, after some circles are deleted. The second parameter defines the maximum allowable reduction of the area by removing a single circle. 
 
  
+ .. figure:: img/Fig5.png
+   :align: center
 
- .. image:: img/Fig1.png
-   :width: 300
+   Figure 5: The removal of circles was tested in three small examples. Each started with 40 equally distributed circles around the perimeter. Here, the resulting circle-approximation is shown. A drastic reduction of circles can be observed, while the accuracy is still very high. 
 
-Figure 5: The removal of circles was tested in three small examples. Each started with 40 equally distributed circles around the perimeter. Here, the resulting circle-approximation is shown. A drastic reduction of circles can be observed, while the accuracy is still very high. 
+
 
  
 
@@ -136,11 +142,13 @@ Cylinder approximations of triangle-meshes (3D)
 Workflow 
 
  
+ 
+ .. figure:: img/Fig6.png
+   :align: center
 
- .. image:: img/Fig1.png
-   :width: 300
+   Figure 6: Overview over the workflow for the 3D approximation of objects 
 
-Figure 6: Overview over the workflow for the 3D approximation of objects 
+
 
 **Read an STL file**
 
@@ -206,24 +214,24 @@ In a for-loop, all the triangles of the geometry are classified into 3 categorie
 
 Since the Blue Triangles are intersected, they have to be redefined with a triangulation process such that the intersection line between the two planes is an edge of two of the new triangles. In the general case, the intersection line crosses the triangle through the two edges, generating a smaller triangle and a quadrilateral. The quadrilateral is divided into two new triangles. The new three resulting triangles are saved either in the New Green Geometry or in the New Red Geometry according to their location.  
 
- .. image:: img/Fig1.png
-   :alt: Figure 7 To cut the mesh-geometry into two parts, some triangles need to be redefined.
+
+
+
+
+ .. figure:: img/Fig7.png
    :align: center
 
- 
+   Figure 7: To cut the mesh-geometry into two parts, some triangles need to be redefined.
 
- 
 
 The previously described function is used as many times as the number of cutting points. Having the first cut performed, the next cutting point always lies in the resultant New Red Geometry, therefore the cutting function can be again applied to that geometry and successively until the last cutting point. 
 
  
+ .. figure:: img/Fig8.png
+   :align: center
 
- 
-.. image:: img/Fig1.png
-   :width: 300
-Figure 8: Before and after dividing the geometry into sections. 
+   Figure 8: Before and after dividing the geometry into sections.
 
- 
 
  
 
@@ -351,10 +359,15 @@ The intersection of cubes and a cylinder: In this example, the effectiveness of 
 
  
 
- .. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig9.png
+   :align: center
 
-Figure 10: Example geometry: Combined shape of cubes and a cylinder. 
+   Figure 9: Example geometry: Combined shape of cubes and a cylinder.
+
+
+ 
+
+ 
 
  
 
@@ -362,34 +375,41 @@ Figure 10: Example geometry: Combined shape of cubes and a cylinder.
 
 Rectangular prism with a hole: With this geometry, the performance of the algorithm in the presence of holes was tested. The output also shows that the function to choose the cutting values works correctly, since those values are located mostly in the region of the hole where the cross section changes considerably. 
 
- .. image:: img/Fig1.png
-   :width: 300
+ 
 
-Figure 11: Example object: Rectangle with a hole. 
+ .. figure:: img/Fig10.png
+   :align: center
+
+   Figure 10: Example object: Rectangle with a hole. 
+
 
  
 
 Pyramid: The performance of approximated inclined faces and sharp edges was tested. 
 
- 
-.. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig11.png
+   :align: center
+
+   Figure 11: Example object: Pyramid  
  
 
-Figure 12: Example object: Pyramid 
 
  
 
  
 
 Torus: The figure shows that curved surfaces can be approximated. When more accuracy is required, the amount of cutting points and cylinder has to be increased. 
+ 
 
- .. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig12.png
+   :align: center
 
-Figure 13: Example object: Torus 
+   Figure 12: Example object: Torus   
+ 
 
-Quality of the approximation 
+
+
+**Quality of the approximation**
 
  
 
@@ -405,10 +425,10 @@ The quality of the approximation depends on all the different parameters that we
 
 CASE OF STUDY: Drivetrain assembly space (Bauraum) 
 
- .. image:: img/Fig1.png
-   :width: 300
+ .. figure:: img/Fig13.png
+   :align: center
 
-Figure 14: Example object and case of study: Assembly space for a drivetrain. 
+   Figure 13: Example object and case of study: Assembly space for a drivetrain. 
 
 
 
@@ -436,18 +456,18 @@ Computations are accurate
 
  
 
+ .. figure:: img/Fig14.png
+   :align: center
+
+   Figure 14: Convergence plot for two different algorithms. The quality is measured by the percentage of approximated volume. The effort is the number of cylinders that is used for that approximation.  
  
-.. image:: img/Fig1.png
-   :width: 300
+
+
+ .. figure:: img/Fig15.png
+   :align: center
+
+   Figure 15: Runtime for two different algorithms. The runtime is compared to the number of cylinders. 
  
-
-Figure 15: Convergence plot for two different algorithms. The quality is measured by the percentage of approximated volume. The effort is the number of cylinders that is used for that approximation. 
-
- .. image:: img/Fig1.png
-   :width: 300
-
-Figure 16: Runtime for two different algorithms. The runtime is compared to the number of cylinders. 
-
 
 
 Discussion  
