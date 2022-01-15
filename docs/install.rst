@@ -10,15 +10,46 @@ This can be achieved by executing the following command::
     cylinder_approximation_3D.m
 
 
-Tutorial
+Algorithm 
 ^^^^^^^^
 
-This section covers the fundamentals of developing with *Cylinder-based approximation of 3D objects*, including
-a package overview, basic and advanced usage, We will assume basic familiarity with Matlab and STL files.
+The main idea of the algorithm is to reduce the approximation of a 3D geometry by cylinders to an approximation of a 2D-polygon by circles. This is possible, because the task is to use only cylinders which are parallel to the y-axis. Therefore, any cut of the cylinder-approximation which is perpendicular to the y-axis can be regarded as a combination of circles. Moreover, these circles resulting from cutting the geometry are constant in a certain range. Therefore, the first step is to approximate a 2D-polygon by circles. This can then be used to define one layer of cylinders. 
+
+In the following sections, the algorithm for the cylinder approximation will be described. Several parameters will be specified, which need to be chosen for the algorithm and which influence the performance. An overview of those parameters will be given at the end of this chapter. 
 
 
-Overview
-~~~~~~~~
+Results 
+^^^^^^^^
+
+
+Conclusions  
+^^^^^^^^
+There is sufficient evidence to prove that the final version of the complete algorithm works well with various STL files, which results in a good approximation of only up to a 2% error. The final approximation of the different STL files outputs the required results, and fulfills all of the project objectives, which were to successfully read an STL file, implement an algorithm to identify significant edges in the cross-section area, efficiently remove and reuse cylinders, comparison of volume approximation with the original geometry volume, and lastly to implement it on different STL files. All in all, a combination of different parts of the algorithm accomplishes the desired tasks. 
+
+
+Outlook 
+^^^^^^^^
+There are several possible measures that could improve the algorithm of the cylinder-approximation. 
+
+ 
+
+As a first idea, better use of the 2D-polygons in the different sections could be made. For example, common edges of neighboring slices could be identified. Then, the same red and green cylinders could be placed at those edges in both sections. By that, the reuse of cylinders in different sections is more effective. 
+
+ 
+
+Secondly, the input could be enhanced. If the input wasn’t only an STL-file, but also consisted of any cylinders which are used in the design process, round geometries could be represented better. In the current algorithm, any cylinder of the original model is transformed into a triangle-mesh. By that, corners are introduced. These will in turn be approximated by some new cylinders. In all these steps, information about the original area is lost. So, these new cylinders can never correctly represent the original cylinder and will always cover a smaller area. 
+
+ 
+
+Thirdly, the parameters which are needed in the code could be tuned to certain kinds of geometries. Different geometries require different parameters to be approximated most effectively. Therefore, experience and knowledge with some similar geometries would make it possible to choose better parameters. 
+
+ 
+
+Lastly, changing the problem definition slightly could also lead to better results.  
+
+An idea would be to not only add or subtract cylinders. In addition, intersections of 2 or 3 cylinders could be included as a new possibility to represent the geometry. This would enable a more accurate representation of sharp corners. The inside-outside-test for this new approach would only be slightly more complex. 
+
+Moreover, not using parallel cylinders but parallel pieces of cones would also open many more possibilities. That would mean, the radius would not be constant over a certain range of y-values but would vary linearly. So, the test, whether a point lies inside the cone, would not be much more difficult. These varying radii would enable an easier representation of tilted triangles. 
 
 The *Cylinder-based approximation of 3D objects* package is structured as collection of submodules:
 
