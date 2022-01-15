@@ -26,7 +26,7 @@ sourceyear = datetime.utcfromtimestamp(
 
 project = 'Cylinder-based approximation of 3D objects'
 copyright = (
-    '2021–2022 Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancour, Chaudhry Taimoor Niaz '
+    '2021–2022 Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Saenz Betancourt, Chaudhry Taimoor Niaz '
     'and the BMW development team; '
     f'2021–{sourceyear} The TUM Software lab development team'
 )
@@ -192,7 +192,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     '1) Ahmad M. Belbeisi,' '\\and 2) Benjamin Sundqvist,' '\\and 3) Cristian Betancourt,' '\\and 4)Chaudhry Taimoor Niaz,' '\\and and the BMW development team', 'manual'),
+     '1) Ahmad M. Belbeisi,' '\\and 2) Benjamin Sundqvist,' '\\and 3) Cristian Saenz Betancourt,' '\\and 4)Chaudhry Taimoor Niaz,' '\\and and the BMW development team', 'manual'),
 ]
 
 
