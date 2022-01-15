@@ -43,11 +43,7 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
 
     install
 
-.. toctree::
-    :caption: Tutorial
-    :maxdepth: 2
 
-    Tutorial
 
 .. toctree::
     :caption: 2D Approximation
