@@ -120,5 +120,5 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
 .. toctree::
     :caption: Reference
     :maxdepth: 1
-
+    Reference
   
