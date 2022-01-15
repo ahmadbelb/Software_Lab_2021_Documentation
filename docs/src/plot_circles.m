@@ -1,5 +1,6 @@
 function [area_section] = plot_circles(radii,X,Y,radii_red,X_red,Y_red,y_values)
-%plot_circles plots 2D-circles in a 3D-space by approximating them as polygons
+%
+% plot_circles plots 2D-circles in a 3D-space by approximating them as polygons
 % It includes circles, which are added (green) and subtracted (red). The
 % circles are plotted at every y-plane of the given y-values. If exactly 2
 % y-values are given, also the also side-faces are plotted, such that the
