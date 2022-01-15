@@ -3,6 +3,41 @@ Cylinder-based approximation of 3D objects
 *******
 
 
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+**Students:**
+
+* Ahmad M. Belbeisi 
+
+* Cristian Saenz Betancourt 
+
+* Chaudhry Taimoor Niaz 
+
+* Benjamin Sundqvist 
+
+ 
+
+**Supervised by:**
+
+* Giovanni Filomeno, M.Sc. 
+
+* Moustafa Alsayed Ahmad, M.Sc. 
+
+
 Introduction 
 ^^^^^^^^
 The automotive industry faces increasingly strict regulations concerning fleet CO<sub>2</sub>  and pollutant emissions, which require innovative drive systems. To meet
