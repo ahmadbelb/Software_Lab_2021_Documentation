@@ -16,7 +16,7 @@ Students:
 
 * Benjamin Sundqvist 
 
-Supervised by:
+Supervisors:
 ~~~~~~~~
 * Giovanni Filomeno, M.Sc. 
 
