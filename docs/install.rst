@@ -437,22 +437,22 @@ Convergence
 Two versions of the algorithm were used for further studies based on the drivetrain assembly space (Bauraum) 
 
  
-Algorithm A  
+**Algorithm A**
 
-Reuses and removes cylinders  
+* Reuses and removes cylinders  
 
-Computations take longer 
+* Computations take longer 
 
-One of the main goals of the project was to implement this algorithm 
+* One of the main goals of the project was to implement this algorithm 
  
 
-Algorithm B  
+**Algorithm B**
 
-Doesn’t reuse nor remove cylinders 
+* Doesn’t reuse nor remove cylinders 
 
-Comparatively faster but uses a higher number of cylinders 
+* Comparatively faster but uses a higher number of cylinders 
 
-Computations are accurate  
+* Computations are accurate  
 
  
 
