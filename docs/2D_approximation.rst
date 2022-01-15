@@ -1,6 +1,6 @@
 2D Approximation
 ^^^^^^^^
-.. automodule:: /
+.. automodule:: ./
 
 
 check_between
