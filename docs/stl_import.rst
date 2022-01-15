@@ -22,9 +22,6 @@ stlSlimVerts
 ----------
 .. autofunction:: src.stlSlimVerts
 
-stlVolume
-----------
-.. autofunction:: src.stlVolume
 
 stlWrite
 ----------

@@ -25,20 +25,11 @@ create_circles
 ----------
 .. autofunction:: src.create_circles
 
-create_cylinders
-----------
-.. autofunction:: src.create_cylinders
+
 
 create_polyshape
 ----------
 .. autofunction:: src.create_polyshape
-
-
-create_sections_initial
-----------
-.. autofunction:: src.create_sections_initial
-
-
 
 
 
