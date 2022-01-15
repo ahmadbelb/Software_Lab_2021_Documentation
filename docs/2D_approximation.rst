@@ -1,6 +1,4 @@
-*******
-2D Approximation
-*******
+
 
 check_between
 ----------

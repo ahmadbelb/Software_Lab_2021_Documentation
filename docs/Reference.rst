@@ -1,6 +1,3 @@
-*******
-Reference
-*******
 
 Random circle packing: 
 ~~~~~~~~

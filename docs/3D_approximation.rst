@@ -1,7 +1,3 @@
-*******
-3D Approximation
-*******
-
 
 create_cylinders
 ----------
