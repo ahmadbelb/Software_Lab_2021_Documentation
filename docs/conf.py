@@ -20,8 +20,12 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = 'Cylinder-based approximation of 3D objects'
-copyright = '2021, TUM'
-author = 'Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancourt, Chaudhry Taimoor Niaz and the BMW development team'
+copyright = (
+    '2021–2022 Ahmad M. Belbeis, Benjamin Sundqvist, Cristian Betancour, Chaudhry Taimoor Nia '
+    'and the BMW development team; '
+    f'2021–{sourceyear} The TUM Software lab development team'
+)
+#author = 'Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancourt, Chaudhry Taimoor Niaz and the BMW development team'
 
 
 # The short X.Y version
@@ -157,7 +161,8 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     'Ahmad M. Belbeisi , Benjamin Sundqvist , Cristian Betancourt , Chaudhry Taimoor Niaz ,the BMW development team', 'manual'),
+     'Ahmad M. Belbeisi\\and Benjamin Sundqvist\\and Cristian Betancourt\\and Chaudhry Taimoor Niaz'
+     '\\and and the BMW development team', 'manual'),
 ]
 
 
@@ -178,7 +183,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain', 'sphinxcontrib-matlabdomain Documentation',
-     author, 'sphinxcontrib-matlabdomain', 'One line description of project.',
+     'Ahmad M. Belbeisi@*Benjamin Sundqvist@*Cristian Betancourt @*Chaudhry Taimoor Niaz@*'
+     'The BMW development team', 'sphinxcontrib-matlabdomain', 'One line description of project.',
      'Miscellaneous'),
 ]
 
