@@ -324,7 +324,7 @@ In the two previous sections, many parameters were mentioned, that influence the
 
 
 .. list-table:: Title
-   :widths: 25 25 50
+   :widths: 25 100 50
    :header-rows: 1
    * - Parameter 
      - Explanation 
