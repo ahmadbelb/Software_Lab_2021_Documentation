@@ -38,33 +38,43 @@ This can be achieved by executing the following command::
 
     cylinder_approximation_3D.m
 
+
+2D Approximation
+^^^^^^^^
 .. toctree::
-    :caption: 2D Approximation
     
 
     2D_approximation
 
+
+3D Approximation
+^^^^^^^^
 .. toctree::
-    :caption: 3D Approximation
+    
     
 
     3D_approximation
 
+STL Import
+^^^^^^^^
 .. toctree::
-    :caption: STL Import
+    
     
 
     stl_import
 
-
+Visualization
+^^^^^^^^
 .. toctree::
-    :caption: Visualization
     
 
     visualization
 
+
+Reference
+^^^^^^^^
 .. toctree::
-    :caption: Reference
+    
     
 
     Reference
