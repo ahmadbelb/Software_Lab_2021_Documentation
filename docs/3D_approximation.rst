@@ -4,16 +4,16 @@
 
 
 create_cylinders
-~~~~~~~~
+----------
 .. autofunction:: src.create_cylinders
 
 
 create_sections_initial
-~~~~~~~~
+----------
 .. autofunction:: src.create_sections_initial
 
 create_sections
-~~~~~~~~
+----------
 .. autofunction:: src.create_sections
 
 
