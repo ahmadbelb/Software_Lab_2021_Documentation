@@ -1,4 +1,5 @@
 function total_area = compute_area3(X, Y, radii, X_red, Y_red, radii_red)
+% 
 % compute_area computes the area of a shape, which is defined by the
 % addition of a set of (green) circles and subtraction of a set of (red)
 % circles. It computes the area by approximating the given circles

@@ -1,4 +1,5 @@
 function is_between = check_between(point1,point2,point)
+% 
 % check_between determines, wether a point (which is assumed to lie on a
 % line defined by points 1 and 2) is located between these 2 points
 %

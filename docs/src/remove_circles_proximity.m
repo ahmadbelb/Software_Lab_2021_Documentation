@@ -1,4 +1,5 @@
 function [radii,X,Y] = remove_circles_proximity(radii,X,Y,radii_stay,X_stay,Y_stay,accuracy_factor)
+% 
 % remove_circles_proximity deletes circles, which have centers very close to 
 % each other. Some given circles may be removed. Some other given circles
 % always remain. The circles are removed, if the center is very close to

@@ -1,4 +1,5 @@
 function [polygon] = define_section_polygon(F,V,N,polygon_left,polygon_right,y_min_section,y_max_section,tol_on_plane)
+% 
 % define_section_polygon creates the maximum possible polygon inside a
 % given geometry. The constraint is, that an extrusion of the polygon along
 % the y-axis through the geometry needs to lie completely inside the

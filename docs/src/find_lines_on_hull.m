@@ -1,5 +1,6 @@
 function [lines_on_hull,inner_point] = find_lines_on_hull(P,P_end)
-%find_lines_on_hull returns lines of a polygon, which are also part of the
+%
+% find_lines_on_hull returns lines of a polygon, which are also part of the
 %sconvex hull of that polygon.
 %
 %Inputs:

@@ -1,4 +1,5 @@
 function []=plot_STL(V,F,color)
+% 
 % plot_STL plots a geometry, which is given in an stl-like datastructure.
 % It either plots a mesh, if the color is "none", or it plots filled faces,
 % if the color is "yes".

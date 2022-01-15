@@ -1,4 +1,5 @@
 function [polygon] = define_cut_polygon(F,V,N,y_value,tol_on_plane,tol_uniquetol,tol)
+% 
 % define_cut_polygon defines a 2D-polygon from a geometry and a given
 % cutting-plane. It is assumed, that the given geometry was already cut at
 % that given plane, so it has edges that lie on that plane. These edges are

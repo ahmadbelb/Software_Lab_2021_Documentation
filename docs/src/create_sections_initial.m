@@ -1,4 +1,5 @@
 function [mesh_list, y_values, F_return, V_return, N_return] = create_sections_initial(F,V,N,number_of_sections,area_percentage_parallel,ends_offset_fraction)
+% 
 % create_sections_initial generates y-values, and cuts the geometry into 
 % according sections. The cuts are performed at x-z-planes at the corresponding
 % y-values. It chooses the y-values at both ends of the geometry. 

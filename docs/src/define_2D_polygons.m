@@ -1,4 +1,5 @@
 function [polygon_list, y_values] = define_2D_polygons(mesh_list, y_values)
+% 
 % define_2D_polygons creates the maximum possible 2D-polygon for each
 % section. That means, the maximum polygon, such that an extrusion of this
 % polygon in the section lies completely within the geometry

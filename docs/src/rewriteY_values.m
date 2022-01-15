@@ -1,4 +1,5 @@
 function [new_y_values] = rewriteY_values(polygon_list, y_values, maximal_area_difference_ratio)
+% 
 % rewriteY_values checks, which y_values are needed and only returns these
 % y_values. The given polygon_list and y_values approximate a geometry,
 % which has been cut into several sections. If 2 polygons only differ
