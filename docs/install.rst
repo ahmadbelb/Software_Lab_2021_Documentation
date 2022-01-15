@@ -1,4 +1,4 @@
-Installation instructions
+Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -11,7 +11,7 @@ This can be achieved by executing the following command::
 
 
 Algorithm 
-^^^^^^^^
+~~~~
 
 The main idea of the algorithm is to reduce the approximation of a 3D geometry by cylinders to an approximation of a 2D-polygon by circles. This is possible, because the task is to use only cylinders which are parallel to the y-axis. Therefore, any cut of the cylinder-approximation which is perpendicular to the y-axis can be regarded as a combination of circles. Moreover, these circles resulting from cutting the geometry are constant in a certain range. Therefore, the first step is to approximate a 2D-polygon by circles. This can then be used to define one layer of cylinders. 
 
@@ -19,16 +19,16 @@ In the following sections, the algorithm for the cylinder approximation will be 
 
 
 Results 
-^^^^^^^^
+~~~~
 
 
 Conclusions  
-^^^^^^^^
+~~~~
 There is sufficient evidence to prove that the final version of the complete algorithm works well with various STL files, which results in a good approximation of only up to a 2% error. The final approximation of the different STL files outputs the required results, and fulfills all of the project objectives, which were to successfully read an STL file, implement an algorithm to identify significant edges in the cross-section area, efficiently remove and reuse cylinders, comparison of volume approximation with the original geometry volume, and lastly to implement it on different STL files. All in all, a combination of different parts of the algorithm accomplishes the desired tasks. 
 
 
 Outlook 
-^^^^^^^^
+~~~~
 There are several possible measures that could improve the algorithm of the cylinder-approximation. 
 
  
@@ -106,7 +106,7 @@ The *Cylinder-based approximation of 3D objects* package is structured as collec
 .. _quickstart:
 
 Quickstart
-~~~~~~~~~~
+~~~~
 Before diving into the details, we'll walk through a brief example program
 
 .. code-block:: python
