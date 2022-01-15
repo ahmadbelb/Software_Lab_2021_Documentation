@@ -38,14 +38,11 @@ Random Circle Packing [1]:  The source code fills a rectangle with tangent circl
 
 Several attempts were made to improve the code and to make it more adaptable, such as allowing the movement of the centers and the possibility to be applied in any type of polygon (boundary). Nonetheless, it was no longer used in the project because it required a lot of circles and the randomness implied long running times.  
 
+ .. figure:: img/Fig1.png
+	:alt: Figure 1 Circle Packing 
+	:align: center
 
-
- .. image:: img/Fig1.png
-   :alt: Figure 1 Circle Packing 
-   :align: center
-   
-   Figure 1: Circle Packing 
-
+   This is the caption of the figure.
 
 
 
