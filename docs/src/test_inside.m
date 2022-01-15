@@ -1,4 +1,5 @@
 function is_inside = test_inside(X,Y,radii,X_red,Y_red,radii_red,x,y)
+% 
 % is_inside tests, if a given point lies inside a shape, that is defined by
 % circles. The shape is defined by the addition of (green) circles and
 % the subtraction of (red) circles.
