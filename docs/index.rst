@@ -1,6 +1,3 @@
-*******
-Cylinder-based approximation of 3D objects
-*******
 **Students:**
 
 * Ahmad M. Belbeisi 
@@ -15,7 +12,7 @@ Cylinder-based approximation of 3D objects
 
 * Giovanni Filomeno, M.Sc. 
 
-* Moustafa Alsayed Ahmad, M.Sc. 
+* Moustafa Alsayed Ahmad, M.Sc.
 
 Introduction 
 ^^^^^^^^
