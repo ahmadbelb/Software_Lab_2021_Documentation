@@ -130,9 +130,9 @@ html_theme_options = {
     'style_nav_header_background': 'black',
     'analytics_id': 'UA-171031946-1',
 }
-html_static_path = ['_static']
+
 html_css_files = [
-    'css/custom.css',
+    'img/custom.css',
 ]
 # If true, add an index to the HTML documents.
 html_use_index = False
