@@ -13,6 +13,11 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+from datetime import datetime
+import time
+sourceyear = datetime.utcfromtimestamp(
+    int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))).year
+
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
