@@ -39,10 +39,34 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
 
 
 .. toctree::
-    :caption: Advanced topics
+    :caption: 2D Approximation
     :maxdepth: 2
 
-    Cylinder_based_approximation_of_3D_objects
+    2D_approximation
+
+.. toctree::
+    :caption: 3D Approximation
+    :maxdepth: 2
+
+    3D_approximation
+
+
+
+.. toctree::
+    :caption: STLImport
+    :maxdepth: 2
+
+    stl_import
+
+
+.. toctree::
+    :caption: Visualization
+    :maxdepth: 2
+
+    visualization
+
+
+
 
 
 .. toctree::
