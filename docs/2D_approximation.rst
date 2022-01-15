@@ -1,6 +1,6 @@
 2D Approximation
 ^^^^^^^^
-
+.. automodule:: 
 check_between
 ----------
 .. autofunction:: check_between
