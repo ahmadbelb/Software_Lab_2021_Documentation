@@ -21,7 +21,7 @@ import os
 
 project = 'Cylinder-based approximation of 3D objects'
 copyright = '2021, TUM'
-author = 'Ahmad M. Belbeisi@*Benjamin Sundqvist@*Cristian Betancourt@*Chaudhry Taimoor Niaz@*and the BMW development team'
+author = 'Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancourt, Chaudhry Taimoor Niaz and the BMW development team'
 
 
 # The short X.Y version
@@ -157,8 +157,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     'John Hunter\\and Darren Dale\\and Eric Firing\\and Michael Droettboom'
-     '\\and and the matplotlib development team', 'manual'),
+     'Ahmad M. Belbeisi , Benjamin Sundqvist , Cristian Betancourt , Chaudhry Taimoor Niaz ,the BMW development team', 'manual'),
 ]
 
 
@@ -168,7 +167,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'sphinxcontrib-matlabdomain', 'CylCylinder-based approximation of 3D objectsnd Documentation',
-     [author], 1)
+     ['Ahmad M. Belbeisi,  Benjamin Sundqvist , Cristian Betancourt , Chaudhry Taimoor Niaz, BMW development team'], 1)
 ]
 
 
