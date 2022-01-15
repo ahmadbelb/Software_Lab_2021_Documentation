@@ -2,23 +2,6 @@
 Cylinder-based approximation of 3D objects
 *******
 
-
- 
-
-
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
 **Students:**
 
 * Ahmad M. Belbeisi 
