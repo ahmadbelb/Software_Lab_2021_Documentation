@@ -2,40 +2,29 @@ Installation instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-pypi
+Running the code 
 ~~~~
-The simplest way to install *librosa* is through the Python Package Index (PyPI).
-This will ensure that all required dependencies are fulfilled.
+The simplest way to use *Cylinder-based approximation of 3D objects* is through running the main file  
 This can be achieved by executing the following command::
 
-    pip install librosa
+    cylinder_approximation_3D.m
 
-or::
-
-    sudo pip install librosa
-
-to install system-wide, or::
-
-    pip install -u librosa
-
-to install just for your own user.
 
 Tutorial
 ^^^^^^^^
 
-This section covers the fundamentals of developing with *librosa*, including
-a package overview, basic and advanced usage, and integration with the *scikit-learn*
-package.  We will assume basic familiarity with Python and NumPy/SciPy.
+This section covers the fundamentals of developing with *Cylinder-based approximation of 3D objects*, including
+a package overview, basic and advanced usage, We will assume basic familiarity with Matlab and STL files.
 
 
 Overview
 ~~~~~~~~
 
-The *librosa* package is structured as collection of submodules:
+The *Cylinder-based approximation of 3D objects* package is structured as collection of submodules:
 
   - librosa
 
-    - :ref:`librosa.beat <beat>`
+    - :ref:`2D_approximation <beat>`
         Functions for estimating tempo and detecting beat events.
 
     - :ref:`librosa.core <core>`
