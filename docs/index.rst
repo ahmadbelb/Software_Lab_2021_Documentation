@@ -32,7 +32,7 @@ Task description
 ~~~~~~~~
 The first task is to import a 3D geometry from an STL file. This volume should then be approximated by cylinders. All these cylinders need to be parallel. They are defined to be parallel to the y-axis of the given geometry. Furthermore, the shape can be defined as an addition and a subtraction of cylinders. In the following, the added cylinders will be called green, and the subtracted cylinders will be called red. The approximation needs to lie entirely inside the original volume, as this volume should model a construction space for a transmission system. Therefore, it needs to be guaranteed that a point is inside the original volume if it is inside the approximation. The aim is to approximate the shape with as few cylinders as possible while approximating the main features of the geometry well. To evaluate the quality of the approximation, also the volume should be computed and compared to the original volume. The code is tested using multiple different STL-files. 
 
-For a further details, please refer to the project report : :download:`pdf <img/project_report.pdf>`.
+For a further details, please refer to :download:`the project report <img/project_report.pdf>`.
 
 Running the code 
 ~~~~~~~~
