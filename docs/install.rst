@@ -3,7 +3,7 @@ Overview
 
 
 Running the code 
-~~~~
+-----------------
 The simplest way to use *Cylinder-based approximation of 3D objects* is through running the main file  
 This can be achieved by executing the following command::
 
@@ -11,11 +11,14 @@ This can be achieved by executing the following command::
 
 
 Algorithm 
-~~~~
+-----------------
 
 The main idea of the algorithm is to reduce the approximation of a 3D geometry by cylinders to an approximation of a 2D-polygon by circles. This is possible, because the task is to use only cylinders which are parallel to the y-axis. Therefore, any cut of the cylinder-approximation which is perpendicular to the y-axis can be regarded as a combination of circles. Moreover, these circles resulting from cutting the geometry are constant in a certain range. Therefore, the first step is to approximate a 2D-polygon by circles. This can then be used to define one layer of cylinders. 
 
 In the following sections, the algorithm for the cylinder approximation will be described. Several parameters will be specified, which need to be chosen for the algorithm and which influence the performance. An overview of those parameters will be given at the end of this chapter. 
+
+
+
 
 
 Results 
