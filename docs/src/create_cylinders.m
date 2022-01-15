@@ -18,9 +18,10 @@ function [cylinders,cylinders_red] = create_cylinders(polygon_list, y_values, nu
 %                         geometry that should be approximated
 %         :y_values: array of length polygon_list + 1, stores all y_values
 %                    between which the 2D-polygons span the original geometry
-%                    number_circles_per_section,red_radius_factor: Used in the
-%                    2D-code, which approximates polygons by circles. (See
-%                    create_circles)
+%                    
+%         :number_circles_per_section,red_radius_factor: Used in the
+%                                                        2D-code, which approximates polygons by circles. (See
+%                                                        create_circles)
 %         :remove_circle_parameters: Used for the functions
 %                                    remove_circles_proximity and remove_circles
 %Outputs:
