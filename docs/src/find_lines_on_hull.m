@@ -7,9 +7,9 @@ function [lines_on_hull,inner_point] = find_lines_on_hull(P,P_end)
 %        with P, this defines all edges of the polygon.
 %Outputs:
 %        :lines_on_hull: logical array, which is one, if the corresponding
-%        line lies on the convex hull
+%line lies on the convex hull
 %        :inner_point: average point of the convex hull,
-%        which is guaranteed to lie inside the convex hull
+%which is guaranteed to lie inside the convex hull
 
 number_points = length(P);
 
