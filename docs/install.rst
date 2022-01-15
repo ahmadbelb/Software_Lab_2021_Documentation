@@ -231,8 +231,9 @@ Since the Blue Triangles are intersected, they have to be redefined with a trian
 
  .. image:: img/Fig1.png
    :width: 300
+   :alt: Figure 7: To cut the mesh-geometry into two parts, some triangles need to be redefined.
 
-Figure 7: To cut the mesh-geometry into two parts, some triangles need to be redefined. 
+ 
 
  
 
@@ -321,7 +322,7 @@ In the two previous sections, many parameters were mentioned, that influence the
 
 
 .. list-table:: Overview of the parameters inside the code
-   :widths: 25 75 25
+   :widths: 25 25 25
    :header-rows: 1
 
    * - Parameter 
