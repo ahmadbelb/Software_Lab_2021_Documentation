@@ -127,7 +127,7 @@ html_logo = 'img/image.png'
 
 html_theme_options = {
     'logo_only': True,
-    'style_nav_header_background': 'blue',
+    'style_nav_header_background': 'black',
     'analytics_id': 'UA-171031946-1',
 }
 html_static_path = ['_static']
