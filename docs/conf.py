@@ -26,7 +26,7 @@ sourceyear = datetime.utcfromtimestamp(
 
 project = 'Cylinder-based approximation of 3D objects'
 copyright = (
-    '2021–2022 Ahmad M. Belbeis, Benjamin Sundqvist, Cristian Betancour, Chaudhry Taimoor Nia '
+    '2021–2022 Ahmad M. Belbeisi, Benjamin Sundqvist, Cristian Betancour, Chaudhry Taimoor Niaz '
     'and the BMW development team; '
     f'2021–{sourceyear} The TUM Software lab development team'
 )
@@ -134,6 +134,30 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+# If true, add an index to the HTML documents.
+html_use_index = False
+
+# If true, generate domain-specific indices in addition to the general index.
+# For e.g. the Python domain, this is the global module index.
+html_domain_index = False
+
+# If true, the reST sources are included in the HTML build as _sources/<name>.
+# html_copy_source = True
+
+# If true, an OpenSearch description file will be output, and all pages will
+# contain a <link> tag referring to it.
+html_use_opensearch = 'False'
+
+# Output file base name for HTML help builder.
+htmlhelp_basename = 'SF2021'
+
+# Use typographic quote characters.
+smartquotes = False
+
+# Path to favicon
+html_favicon = 'img/favicon.ico'
+
+# Options for LaTeX output
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
