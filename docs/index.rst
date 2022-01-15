@@ -43,6 +43,8 @@ Several attempts were made to improve the code and to make it more adaptable, su
  .. image:: img/Fig1.png
    :alt: Figure 1 Circle Packing 
    :align: center
+  Figure 1: Circle Packing 
+
 
 
 
