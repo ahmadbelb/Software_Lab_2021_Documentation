@@ -95,20 +95,6 @@ Another idea was, to approach this topic by formulating a general optimization p
 For a quick introduction to using Cylinder-based approximation of 3D objects, please refer to the :doc:`tutorial`.
 
 
-Citing Cylinder-based approximation of 3D objects
-==============
-
-If you want to cite Cylinder-based approximation of 3D objects in a scholarly work, there are two ways to do it.
-
-- If you are using the library for your work, for the sake of reproducibility, please cite the version you used by retrieving the appropriate DOI and citation information from Zenodo:
-
-.. image:: https://zenodo.org/badge/
-   :target:
-
-- If you wish to cite Cylinder-based approximation of 3D objects for its design, motivation etc., please cite the poster
-  published at TUM 2021. [#]_
-
-.. [#]
 
 
 

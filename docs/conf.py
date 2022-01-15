@@ -166,7 +166,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain.tex', 'Cylinder-based approximation of 3D objects Documentation',
-     'Ahmad M. Belbeisi\\and Benjamin Sundqvist\\and Cristian Betancourt\\and Chaudhry Taimoor Niaz'
+     'Ahmad M. Belbeisifirst\\and Benjamin Sundqvist\\and Cristian Betancourt\\and Chaudhry Taimoor Niaz'
      '\\and and the BMW development team', 'manual'),
 ]
 
@@ -177,7 +177,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'sphinxcontrib-matlabdomain', 'CylCylinder-based approximation of 3D objectsnd Documentation',
-     ['Ahmad M. Belbeisi,Benjamin Sundqvist,Cristian Betancourt,Chaudhry Taimoor Niaz,BMW development team'], 1)
+     ['Ahmad M. Belbeisisecond,Benjamin Sundqvist,Cristian Betancourt,Chaudhry Taimoor Niaz,BMW development team'], 1)
 ]
 
 
@@ -188,7 +188,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'sphinxcontrib-matlabdomain', 'sphinxcontrib-matlabdomain Documentation',
-     'Ahmad M. Belbeisi@*Benjamin Sundqvist@*Cristian Betancourt@*Chaudhry Taimoor Niaz@*'
+     'Ahmad M. Belbeisithird@*Benjamin Sundqvist@*Cristian Betancourt@*Chaudhry Taimoor Niaz@*'
      'The BMW development team', 'sphinxcontrib-matlabdomain', 'One line description of project.',
      'Miscellaneous'),
 ]
