@@ -3,7 +3,7 @@ function is_between = check_between(point1,point2,point)
 % line defined by points 1 and 2) is located between these 2 points
 %|Inputs:
 %          point1,point2: defines the line
-%|         point: point on that line, that is checked
+%          point: point on that line, that is checked
 %Outputs:
 %         is_between: boolean value, if the point is in between
 
