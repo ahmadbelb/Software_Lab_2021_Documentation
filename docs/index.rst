@@ -53,7 +53,7 @@ If you want to cite Cylinder-based approximation of 3D objects in a scholarly wo
 
 
 .. toctree::
-    :caption: STLImport
+    :caption: STL Import
     :maxdepth: 2
 
     stl_import
