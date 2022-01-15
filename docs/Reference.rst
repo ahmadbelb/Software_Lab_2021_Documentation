@@ -1,7 +1,7 @@
 
-*******
+*********
 Reference
-*******
+*********
 
 
 **Random circle packing:**
